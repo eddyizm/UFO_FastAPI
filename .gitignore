@@ -6,6 +6,7 @@ __pycache__/
 # data
 *.csv
 *.sqlite
+*.sqlite-journal
 
 # C extensions
 *.so

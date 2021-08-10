@@ -3,16 +3,16 @@ import databases
 from pydantic import BaseModel
 from typing import List
 import sqlalchemy
-
+from sqlalchemy import select, func
 
 # SQLAlchemy specific code, as with any other app
-DATABASE_URL = "sqlite:///./.ufo.db"
+DATABASE_URL = "sqlite:///./ufo.db"
 # DATABASE_URL = "postgresql://user:password@postgresserver/db"
 
 database = databases.Database(DATABASE_URL)
 metadata = sqlalchemy.MetaData()
 engine = sqlalchemy.create_engine(
-    DATABASE_URL, connect_args={"check_same_thread": False}
+    DATABASE_URL, echo= True, connect_args={"check_same_thread": False}
 )
 
 ufo_sightings = sqlalchemy.Table(
@@ -52,6 +52,9 @@ class UFO_Reports(BaseModel):
     class Config:
         orm_mode = True
 
+class UFO_Locations(BaseModel):
+    state: str
+    count : int
 
 app = FastAPI()
 
@@ -82,4 +85,8 @@ async def sightings_by_city(city: str):
     print(query)
     return await database.fetch_all(query)     
     
-
+# , response_model=List[UFO_Locations]
+@app.get("/sighting-location/")
+async def  sighting_localtion():
+    query = select([ufo_sightings.c.state,  func.count(ufo_sightings.c.id).label('count')]).group_by(ufo_sightings.c.state)
+    return await database.fetch_all(query)     

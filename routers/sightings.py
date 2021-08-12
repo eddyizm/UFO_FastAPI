@@ -9,12 +9,14 @@ from sqlalchemy import select, func
 
 router = APIRouter()
 
+# TODO add paging style? 
 @router.get("/sightings/", response_model=List[UFO_Reports])
 async def sightings():
     query = ufo_sightings.select().limit(100)
     print(query)
     return await database.fetch_all(query)
      
+# TODO make sure case insensitive     
 @router.get("/sightings-by-city/{city}", response_model=List[UFO_Reports])
 async def sightings_by_city(city: str):
     query = ufo_sightings.select().where(ufo_sightings.c.city == city)
@@ -31,3 +33,5 @@ async def sightings_by_id(id: int):
     query = ufo_sightings.select().where(ufo_sightings.c.id == id)
     print(query)
     return await database.fetch_one(query)     
+
+# TODO search by state or location    

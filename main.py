@@ -85,8 +85,13 @@ async def sightings_by_city(city: str):
     print(query)
     return await database.fetch_all(query)     
     
-# , response_model=List[UFO_Locations]
-@app.get("/sighting-location/")
+@app.get("/sighting-location/", response_model=List[UFO_Locations])
 async def  sighting_localtion():
     query = select([ufo_sightings.c.state,  func.count(ufo_sightings.c.id).label('count')]).group_by(ufo_sightings.c.state)
     return await database.fetch_all(query)     
+
+@app.get("/sightings-by-id/{id}", response_model=UFO_Reports)
+async def sightings_by_id(id: int):
+    query = ufo_sightings.select().where(ufo_sightings.c.id == id)
+    print(query)
+    return await database.fetch_one(query)     

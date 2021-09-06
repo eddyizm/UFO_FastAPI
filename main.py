@@ -14,7 +14,7 @@ def generate_html_response():
         </head>
         <body>
             
-UFO! UFO!
+    UFO! UFO!
 
         </body>
     </html>
@@ -22,15 +22,15 @@ UFO! UFO!
     return HTMLResponse(content=html_content, status_code=200)
 
 # database connection events 
-@app.on_event("startup")
-async def startup():
-    await database.connect()
+# @app.on_event("startup")
+# async def startup():
+#     await database.connect()
 
-@app.on_event("shutdown")
-async def shutdown():
-    await database.disconnect()
+# @app.on_event("shutdown")
+# async def shutdown():
+#     await database.disconnect()
 
 @app.get("/")
 async def root():
-    return generate_html_response()
     # return {"message": "Hello World!"}
+    return generate_html_response()

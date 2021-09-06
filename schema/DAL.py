@@ -3,11 +3,12 @@ DATA ACCESS LAYER
 Sql Alchemy connection and metadata
 '''
 import sqlalchemy
-import databases
+# import databases
+from databases import Database
 DATABASE_URL = "sqlite:///./ufo.db"
 # DATABASE_URL = "postgresql://user:password@postgresserver/db"
 
-database = databases.Database(DATABASE_URL)
+database = Database(DATABASE_URL)
 metadata = sqlalchemy.MetaData()
 engine = sqlalchemy.create_engine(
     DATABASE_URL, echo = True, connect_args={"check_same_thread": False}
@@ -32,3 +33,10 @@ ufo_sightings = sqlalchemy.Table(
 )
 
 metadata.create_all(engine)
+
+# async def get_db():
+#     db =  await database.connect()
+#     try:
+#         yield db
+#     finally:
+#         await database.disconnect()

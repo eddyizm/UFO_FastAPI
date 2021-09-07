@@ -47,3 +47,8 @@ Assertions - node, npm and ng already installed.
  npm install
  ng serve --open
 ```
+
+Add nebular theming.
+```
+cd ufoApp
+ng add @nebular/theme

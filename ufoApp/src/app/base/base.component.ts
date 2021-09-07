@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UFO } from '../models/ufo';
-import { Observable } from "rxjs";
 import { UfoapiService } from '../services/ufoapi.service';
 @Component({
   selector: 'app-base',

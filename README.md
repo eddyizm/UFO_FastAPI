@@ -37,3 +37,9 @@ pip install -r requirements.txt
 ```
 uvicorn main:app --reload
 ```
+
+# Front end (Angular )
+
+```
+ ng new ufoApp --skip-install=true
+```

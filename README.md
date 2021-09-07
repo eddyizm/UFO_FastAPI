@@ -40,6 +40,10 @@ uvicorn main:app --reload
 
 # Front end (Angular )
 
+Assertions - node, npm and ng already installed. 
+
 ```
  ng new ufoApp --skip-install=true
+ npm install
+ ng serve --open
 ```

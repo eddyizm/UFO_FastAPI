@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { UFO } from '../models/ufo';
+import { Observable } from "rxjs";
+import { UfoapiService } from '../services/ufoapi.service';
 @Component({
   selector: 'app-base',
   templateUrl: './base.component.html',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BaseComponent implements OnInit {
 
-  constructor() { }
+  ufoSighting: UFO;
+
+  constructor(private ufoService: UfoapiService) { }
 
   ngOnInit(): void {
+    this.ufoService.getRandomUFO().subscribe(
+      (result) => {
+        console.log('this is the result: ' + result)   
+        this.ufoSighting = result; 
+      },
+      (err) => {
+        return console.error(err);
+      }
+    );
+    
+    
+    
   }
 
 }

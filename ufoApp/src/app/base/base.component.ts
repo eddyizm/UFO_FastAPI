@@ -13,18 +13,20 @@ export class BaseComponent implements OnInit {
   constructor(private ufoService: UfoapiService) { }
 
   ngOnInit(): void {
+    this.random()
+
+  }
+
+  public random(): void
+  {
     this.ufoService.getRandomUFO().subscribe(
-      (result) => {
-        console.log('this is the result: ' + result)   
-        this.ufoSighting = result; 
-      },
-      (err) => {
-        return console.error(err);
-      }
-    );
-    
-    
-    
+        (result) => {
+          this.ufoSighting = result; 
+        },
+        (err) => {
+          return console.error(err);
+        }
+      );
   }
 
 }

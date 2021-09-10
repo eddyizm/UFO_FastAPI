@@ -1,13 +1,13 @@
-<nb-card>
-  <nb-card-header><h2>Summary: {{ ufoSighting?.summary }}</h2></nb-card-header>
+<nb-card accent="info">
+  <nb-card-header>
+     <img src="assets/images/ufo_fuzzy_m.png"> 
+  </nb-card-header>
   <nb-card-body>
-    <p>{{ ufoSighting?.text }}</p>
-    
+    <p>Summary: {{ ufoSighting?.summary }}</p>
   </nb-card-body>
   <nb-card-footer>Date: {{ ufoSighting?.date_time }} <br>
     City: {{ ufoSighting?.city }} <br>
     State: {{ ufoSighting?.state }}</nb-card-footer>
 </nb-card>
 
-
-<button nbButton>Hello World</button>
+<button nbButton outline shape="round" (click)="random()" status="primary">Load a Random Sighting</button>

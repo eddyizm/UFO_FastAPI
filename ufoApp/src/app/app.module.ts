@@ -6,7 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, NbButtonModule,
+  NbIconModule, NbMenuModule, NbSearchModule, NbSpinnerModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { BaseComponent } from './base/base.component';
 
@@ -24,7 +25,12 @@ import { BaseComponent } from './base/base.component';
     NbLayoutModule,
     NbEvaIconsModule,
     NbCardModule,
+    NbButtonModule,
+    NbIconModule, 
+    NbSearchModule,
+    NbSpinnerModule,
     NbSidebarModule.forRoot(),
+    NbMenuModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: BaseComponent, pathMatch: 'full' },
     ])
@@ -33,3 +39,4 @@ import { BaseComponent } from './base/base.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

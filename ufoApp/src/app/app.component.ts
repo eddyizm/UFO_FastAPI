@@ -26,7 +26,13 @@ export class AppComponent {
       title: 'Charts',
       icon: 'pie-chart-2',
       link: '/charts'
+    },
+    {
+      title: 'Site',
+      icon: 'browser',
+      link: '/site'
     }
+
   ];
 
   constructor(private searchService: NbSearchService, private readonly sidebarService: NbSidebarService) {

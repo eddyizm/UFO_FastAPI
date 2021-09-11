@@ -1,13 +1,20 @@
-<nb-card accent="info">
-  <nb-card-header>
-     <img src="assets/images/ufo_fuzzy_m.png"> 
+
+<button nbButton outline shape="round" (click)="random()" status="primary">Load a Random Sighting</button>
+<br><br>
+<nb-card accent="info" class="hdr-image">
+  <nb-card-header >
+     <img src={{imagePath}}> 
+     <p>shape: {{ ufoSighting?.shape }}</p>
   </nb-card-header>
   <nb-card-body>
     <p>Summary: {{ ufoSighting?.summary }}</p>
+    <p>Details: {{ ufoSighting?.text }}</p>
+    
   </nb-card-body>
   <nb-card-footer>Date: {{ ufoSighting?.date_time }} <br>
     City: {{ ufoSighting?.city }} <br>
-    State: {{ ufoSighting?.state }}</nb-card-footer>
+    State: {{ ufoSighting?.state }}
+  </nb-card-footer>
 </nb-card>
 
-<button nbButton outline shape="round" (click)="random()" status="primary">Load a Random Sighting</button>
+

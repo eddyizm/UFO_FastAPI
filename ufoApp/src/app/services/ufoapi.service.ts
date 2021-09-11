@@ -16,5 +16,5 @@ export class UfoapiService {
   getRandomUFO(): Observable<UFO> {
     return this.http.get<UFO>(BASE_URL + "sighting-random/");
   }
-   
+  
 }

@@ -18,14 +18,19 @@ export class AppComponent {
       home: true
     },
     {
-      title: 'Maps',
+      title: 'By State',
       icon: 'map',
-      link: '/maps'
+      link: '/state'
     },
     {
-      title: 'Charts',
-      icon: 'pie-chart-2',
-      link: '/charts'
+      title: 'By Date',
+      icon: 'calendar',
+      link: '/dates'
+    },
+    {
+      title: 'By Shape',
+      icon: 'navigation-2',
+      link: '/shape'
     },
     {
       title: 'Site',

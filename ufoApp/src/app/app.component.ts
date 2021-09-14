@@ -14,13 +14,13 @@ export class AppComponent {
     {
       title: 'Home',
       icon: 'home',
-      link: '',
+      link: '/',
       home: true
     },
     {
-      title: 'By State',
+      title: 'By Location',
       icon: 'map',
-      link: '/state'
+      link: '/locations'
     },
     {
       title: 'By Date',

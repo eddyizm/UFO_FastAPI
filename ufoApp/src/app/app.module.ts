@@ -10,11 +10,19 @@ import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, NbButtonM
   NbIconModule, NbMenuModule, NbSearchModule, NbSpinnerModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { BaseComponent } from './base/base.component';
+import { LocationsComponent } from './locations/locations.component';
+import { DatesComponent } from './dates/dates.component';
+import { ShapesComponent } from './shapes/shapes.component';
+import { SiteComponent } from './site/site.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BaseComponent
+    BaseComponent,
+    LocationsComponent,
+    DatesComponent,
+    ShapesComponent,
+    SiteComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +41,10 @@ import { BaseComponent } from './base/base.component';
     NbMenuModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: BaseComponent, pathMatch: 'full' },
+      { path: 'locations', component: LocationsComponent },
+      { path: 'dates', component: DatesComponent },
+      { path: 'shape', component: ShapesComponent },
+      { path: 'site', component: SiteComponent },
     ])
   ],
   providers: [],

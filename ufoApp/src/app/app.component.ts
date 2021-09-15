@@ -14,7 +14,7 @@ export class AppComponent {
     {
       title: 'Home',
       icon: 'home',
-      link: '/',
+      link: '/home',
       home: true
     },
     {
@@ -31,6 +31,11 @@ export class AppComponent {
       title: 'By Shape',
       icon: 'navigation-2',
       link: '/shape'
+    },
+    {
+      title: 'Report Sighting',
+      icon: 'phone',
+      link: '/report'
     },
     {
       title: 'Site',

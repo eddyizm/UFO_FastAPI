@@ -1,1 +1,14 @@
-<p>locations works!</p>
+<nb-card size="medium">
+  <nb-card-header>
+    State : Count
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item *ngFor="let location of locations">
+      <div><span> 
+        <h6 *ngIf="location.state == ''" > Unkown </h6> 
+        <h6 *ngIf="location.state != ''" > {{ location.state }} </h6> 
+        Sightings: {{ location.count }}</span>
+      </div>
+    </nb-list-item>
+  </nb-list>
+</nb-card>

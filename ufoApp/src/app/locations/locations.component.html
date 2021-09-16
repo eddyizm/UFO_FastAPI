@@ -1,14 +1,25 @@
-<nb-card size="medium">
-  <nb-card-header>
-    State : Count
-  </nb-card-header>
-  <nb-list>
-    <nb-list-item *ngFor="let location of locations">
-      <div><span> 
-        <h6 *ngIf="location.state == ''" > Unkown </h6> 
-        <h6 *ngIf="location.state != ''" > {{ location.state }} </h6> 
-        Sightings: {{ location.count }}</span>
-      </div>
-    </nb-list-item>
-  </nb-list>
-</nb-card>
+<ng-container *ngFor="let location of locations; let i = index">
+  <div class="card-row" *ngIf="i % 2 == 0">
+    <div class="card-col">
+      <nb-card status="info">
+        <nb-card-header *ngIf="locations[i + 0].state === ''">
+          State: UNKNOWN
+        </nb-card-header>
+        <nb-card-header
+          *ngIf="i + 0 < locations.length && locations[i + 0].state != ''"
+        >
+          State: {{ locations[i + 0].state }}
+        </nb-card-header>
+        <nb-card-body> Sightings: {{ locations[i + 0].count }}</nb-card-body>
+      </nb-card>
+    </div>
+    <div class="card-col">
+      <nb-card status="info">
+        <nb-card-header *ngIf="i + 1 < locations.length">
+          State: {{ locations[i + 1].state }}
+        </nb-card-header>
+        <nb-card-body> Sightings: {{ locations[i + 1].count }} </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</ng-container>

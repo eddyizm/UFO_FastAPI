@@ -11,6 +11,8 @@ Import csv file as table using DB browser -> https://sqlitebrowser.org/
 
 Add new column `id` type `Integer` check box for `pk` (primary key)
 
+Updated empty `state` fields to `'INTL'` to identify international reports outside of USA/CANADA. Don't hate, this is not my database. :-)
+
 ## Create repo  
 
 Create new repo and clone it. Or you can clone this project

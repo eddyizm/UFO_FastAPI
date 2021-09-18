@@ -4,7 +4,7 @@ All the ufo sightings come from here
 from fastapi import APIRouter
 from typing import List, Optional
 from schema.DAL import DATABASE_URL, ufo_sightings, database
-from schema.models import UFO_Locations, UFO_Reports
+from schema.models import UFO_Locations, UFO_Reports, UFO_Summary
 from sqlalchemy import select, func
 
 router = APIRouter()
@@ -51,4 +51,13 @@ async def sighting_random():
     ''' Return one random result '''
     query = ufo_sightings.select().order_by(func.random()).limit(1)    
     return await database.fetch_one(query)
-# TODO search by state or location    
+
+
+@router.get("/sightings-summary/", response_model=List[UFO_Summary])
+async def sightings_summary(state: Optional[str] = None):
+    ''' Returns sightings summary by state, and some other stuff.'''
+    if state:
+        query = ufo_sightings.select().where(ufo_sightings.c.state == state.upper()).limit(100)
+        return await database.fetch_all(query)     
+    # query = ufo_sightings.select().limit(100)
+    # return await database.fetch_all(query)

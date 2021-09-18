@@ -2,11 +2,13 @@
 Models 
 Guess I'm following a django pattern?
 '''
+from typing import Optional
 from pydantic import BaseModel
 
 class UFO_Locations(BaseModel):
     state: str
     count : int
+    fullstate: Optional[str] = ''
 
 
 class UFO_Reports(BaseModel):

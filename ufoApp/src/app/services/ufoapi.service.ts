@@ -21,4 +21,10 @@ export class UfoapiService {
   getLocations(): Observable<ufo_locations[]>{
     return this.http.get<ufo_locations[]>(BASE_URL + "sighting-location/");
   }
+
+  getStateLocationList(st: string): Observable<UFO[]>{
+    return this.http.get<UFO[]>(`${BASE_URL}sightings/?state=${st}`);
+  }
+
+  
 }

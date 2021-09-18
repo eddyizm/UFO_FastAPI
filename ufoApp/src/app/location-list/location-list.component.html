@@ -1,0 +1,11 @@
+<nb-card size="medium">
+      <nb-card-header>
+        Looking at {{ st }} !
+      </nb-card-header>
+      <nb-list>
+        <nb-list-item *ngFor="let ufo of ufoSightings">
+          {{ ufo.posted }} | {{ ufo.summary }} 
+        </nb-list-item>
+       
+      </nb-list>
+    </nb-card>

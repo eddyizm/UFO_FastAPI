@@ -71,16 +71,19 @@ export class LocationsComponent implements OnInit {
    'YK': 'Yukon (Canada)'
   }
 
-  constructor(private ufoService: UfoapiService) { }
+  constructor(private ufoService: UfoapiService) {}
 
   ngOnInit(): void {
-    this.loadNext();
+    this.load();
   }
 
-  loadNext() {
+  load() {
     this.ufoService.getLocations()
       .subscribe(result => {
         this.locations = result;
+        for (var index in this.locations){
+          this.locations[index].fullstate = this.stateHash[this.locations[index].state];
+      }
       });
   }
 

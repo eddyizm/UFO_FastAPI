@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NbMenuItem, NbSearchService, NbSidebarService } from '@nebular/theme';
+import { NbMenuItem, NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +8,7 @@ import { NbMenuItem, NbSearchService, NbSidebarService } from '@nebular/theme';
 })
 export class AppComponent {
   title = 'ufoApp';
-  value = '';
-
+  
   items: NbMenuItem[] = [
     {
       title: 'Home',
@@ -45,12 +44,8 @@ export class AppComponent {
 
   ];
 
-  constructor(private searchService: NbSearchService, private readonly sidebarService: NbSidebarService) {
-
-    this.searchService.onSearchSubmit()
-      .subscribe((data: any) => {
-        this.value = data.term;
-      })
+  constructor(private readonly sidebarService: NbSidebarService) {
+    
     }
 
     toggleSidebar(): boolean {

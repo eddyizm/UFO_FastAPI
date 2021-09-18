@@ -2,13 +2,9 @@
   <div class="card-row" *ngIf="i % 2 == 0">
     <div class="card-col">
       <nb-card status="info">
-        <nb-card-header *ngIf="locations[i + 0].state === ''">
-          State: UNKNOWN
-        </nb-card-header>
         <nb-card-header
-          *ngIf="i + 0 < locations.length && locations[i + 0].state != ''"
-        >
-          State: {{ locations[i + 0].fullstate }}  
+          *ngIf="i + 0 < locations.length"
+        > State: {{ locations[i + 0].fullstate }}  
         </nb-card-header>
         <nb-card-body> 
           Sightings: <a [routerLink]="'/locations/'+[locations[i + 0].state]"> {{ locations[i + 0].count }}</a>
@@ -20,7 +16,9 @@
         <nb-card-header *ngIf="i + 1 < locations.length">
           State: {{ locations[i + 1].fullstate }}
         </nb-card-header>
-        <nb-card-body> Sightings: {{ locations[i + 1].count }} </nb-card-body>
+        <nb-card-body> 
+          Sightings: <a [routerLink]="'/locations/'+[locations[i + 1].state]"> {{ locations[i + 1].count }}</a>
+        </nb-card-body>
       </nb-card>
     </div>
   </div>

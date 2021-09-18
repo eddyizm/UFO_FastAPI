@@ -68,7 +68,8 @@ export class LocationsComponent implements OnInit {
    'NF': 'NEWFOUNDLAND,CAN', 'NS': 'NOVA SCOTIA,CAN','NT': 'NORTHWEST TERRITORY','ON': 'ONTARIO,CAN',
    'PE': 'PRINCE EDW ISLAND', 'PQ': 'PROV OF QUE,CAN', 'PR': 'Puerto Rico', 'QC': 'QC',
    'SA': 'SASKATCHEWAN,CAN', 'SK': 'Saskatoon (Canada)', 'VI': 'VIRGIN ISLANDS',
-   'YK': 'Yukon (Canada)'
+   'YT': 'Yukon (Canada)',
+   'INTL': 'International'
   }
 
   constructor(private ufoService: UfoapiService) {}
@@ -85,6 +86,7 @@ export class LocationsComponent implements OnInit {
           this.locations[index].fullstate = this.stateHash[this.locations[index].state];
       }
       });
+      
   }
 
 }

@@ -4,8 +4,9 @@ All the ufo sightings come from here
 from fastapi import APIRouter
 from typing import List, Optional
 from schema.DAL import DATABASE_URL, ufo_sightings, database
-from schema.models import UFO_Locations, UFO_Reports, UFO_Summary
+from schema.models import UFO_Locations, UFO_Reports, UFO_Summary, UFO_Dates
 from sqlalchemy import select, func
+from datetime import datetime
 
 router = APIRouter()
 
@@ -59,5 +60,18 @@ async def sightings_summary(state: Optional[str] = None):
     if state:
         query = ufo_sightings.select().where(ufo_sightings.c.state == state.upper()).limit(100)
         return await database.fetch_all(query)     
-    # query = ufo_sightings.select().limit(100)
-    # return await database.fetch_all(query)
+    
+
+@router.get("/sighting-dates/", response_model=List[UFO_Dates])
+async def  sighting_dates(q: Optional[str] = None):
+    ''' Returns sightings by month/year. '''
+    query = ''' select 
+            CASE WHEN date_time = ''
+            THEN "UKNOWN" ELSE
+            strftime("%m/%Y", date_time) 
+            END AS month_year
+            , count(id) as count
+            from ufo_sightings
+            group by strftime("%m/%Y", date_time)
+            ORDER BY strftime("%Y", date_time) DESC '''
+    return await database.fetch_all(query)     

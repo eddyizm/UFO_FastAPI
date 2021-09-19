@@ -20,6 +20,11 @@ class UFO_Locations(BaseModel):
     fullstate: Optional[str] = ''
 
 
+class UFO_Dates(BaseModel):
+    month_year: str
+    count : int
+
+
 class UFO_Reports(BaseModel):
     id: int
     summary: str

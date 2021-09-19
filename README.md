@@ -31,6 +31,8 @@ Create a virtual environment for this project where `env` is the name of the new
 cd UFO_FastAPI
 # create virtual env
 python -m venv env 
+# activate virtual env
+source env/bin/activate
 # install requirements
 pip install -r requirements.txt
 ```

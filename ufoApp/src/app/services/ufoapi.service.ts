@@ -4,6 +4,7 @@ import { UFO } from "../models/ufo";
 import { Observable } from "rxjs";
 import { ufo_locations } from '../models/locations';
 import { UFO_Dates} from '../models/ufo_dates';
+import { ufo_summary } from '../models/summary';
 
 const BASE_URL = 'http://127.0.0.1:8000/'
 
@@ -29,5 +30,15 @@ export class UfoapiService {
 
   getLocateDateList(): Observable<UFO_Dates[]>{
     return this.http.get<UFO_Dates[]>(`${BASE_URL}sighting-dates/`);
+  }
+
+
+  getSummary(_state: string = '', _myear: string = ''): Observable<ufo_summary[]>{
+    if (_myear != ''){
+      return this.http.get<ufo_summary[]>(`${BASE_URL}sighting-summary/?myear=${_myear}`);  
+    }
+    if (_state != ''){
+      return this.http.get<ufo_summary[]>(`${BASE_URL}sighting-summary/?state=${_state}`);  
+    }
   }
 }

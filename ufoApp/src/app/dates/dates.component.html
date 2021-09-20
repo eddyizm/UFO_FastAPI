@@ -9,8 +9,10 @@
         <ng-container nbTreeGridColumnDef="month_year">
           <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>date</th>
           <td nbTreeGridCell *nbTreeGridCellDef="let row">
-            {{row.data.month_year}}
+            
+            <a [routerLink]="['/summary']" [queryParams]="{ myear: row.data.month_year}"> {{row.data.month_year}}</a> 
           </td>
+           <!-- <a [routerLink]="'/locations/'+[locations[i + 0].state]"> {{ locations[i + 0].count }}</a> -->
         </ng-container>
 
         <ng-container nbTreeGridColumnDef="count" [hideOn]="600">

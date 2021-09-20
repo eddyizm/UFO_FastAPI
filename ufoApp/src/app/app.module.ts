@@ -17,6 +17,7 @@ import { ShapesComponent } from './shapes/shapes.component';
 import { SiteComponent } from './site/site.component';
 import { NewSightingComponent } from './new-sighting/new-sighting.component';
 import { LocationListComponent } from './location-list/location-list.component';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LocationListComponent } from './location-list/location-list.component';
     ShapesComponent,
     SiteComponent,
     NewSightingComponent,
-    LocationListComponent
+    LocationListComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,7 @@ import { LocationListComponent } from './location-list/location-list.component';
       { path: 'home', component: BaseComponent, pathMatch: 'full' },
       { path: 'locations', component: LocationsComponent },
       { path: 'locations/:state', component: LocationListComponent },
+      { path: 'summary', component: SummaryComponent },
       { path: 'dates', component: DatesComponent },
       { path: 'shape', component: ShapesComponent },
       { path: 'report', component: NewSightingComponent },

@@ -54,12 +54,26 @@ async def sighting_random():
     return await database.fetch_one(query)
 
 
-@router.get("/sightings-summary/", response_model=List[UFO_Summary])
-async def sightings_summary(state: Optional[str] = None):
-    ''' Returns sightings summary by state, and some other stuff.'''
+@router.get("/sighting-summary/", response_model=List[UFO_Summary])
+async def sightings_summary(myear: Optional[str] = None, state: Optional[str] = None):
+    ''' Returns sightings summary by monthyear or state.'''
+    if myear:
+        query = '''
+        select id, city, state, summary, date_time            
+            from ufo_sightings
+            where strftime("%m/%Y", date_time) = :_myear
+			ORDER BY strftime("%Y", date_time) DESC
+        '''
+        return await database.fetch_all(query=query, values={"_myear": myear})     
     if state:
-        query = ufo_sightings.select().where(ufo_sightings.c.state == state.upper()).limit(100)
-        return await database.fetch_all(query)     
+        query = '''
+            select id, city, state, summary, date_time            
+            from ufo_sightings
+            where state = :_state
+			ORDER BY strftime("%Y", date_time) DESC
+        '''
+        # ufo_sightings.select().where(ufo_sightings.c.state == state.upper()).limit(100)
+        return await database.fetch_all(query=query, values={"_state": state})     
     
 
 @router.get("/sighting-dates/", response_model=List[UFO_Dates])

@@ -1,0 +1,41 @@
+<nb-card>
+  <nb-card-body>
+    <table [nbTreeGrid]="data" equalColumnsWidth>
+      <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+      <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+      <ng-container nbTreeGridColumnDef="id">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>id</th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">
+          {{ row.data.id }}
+        </td>
+      </ng-container>
+
+      <ng-container nbTreeGridColumnDef="summary" [hideOn]="600">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>summary</th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">
+          {{ row.data.summary }}
+        </td>
+      </ng-container>
+
+      <ng-container nbTreeGridColumnDef="city" [hideOn]="1000">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>city</th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">{{ row.data.city }}</td>
+      </ng-container>
+
+      <ng-container nbTreeGridColumnDef="state" [hideOn]="600">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>state</th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">
+          {{ row.data.state }}
+        </td>
+      </ng-container>
+
+      <ng-container nbTreeGridColumnDef="date_time">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>date_time</th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">
+          {{ row.data.date_time }}
+        </td>
+      </ng-container>
+    </table>
+  </nb-card-body>
+</nb-card>

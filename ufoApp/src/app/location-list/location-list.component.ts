@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ufo_summary } from '../models/summary';
 import { UFO } from '../models/ufo';
 import { UfoapiService } from '../services/ufoapi.service';
 
@@ -11,16 +12,15 @@ import { UfoapiService } from '../services/ufoapi.service';
 export class LocationListComponent implements OnInit {
 
   st: string;
-  ufoSightings: UFO[];
+  ufoSummary: ufo_summary[];
 
   constructor(private route: ActivatedRoute, private ufoService: UfoapiService) { }
 
   ngOnInit(): void {
     this.st = this.route.snapshot.paramMap.get("state");
-    this.ufoService.getStateLocationList(this.st).subscribe(
+    this.ufoService.getSummary(this.st, '').subscribe(
       (results) => {
-        this.ufoSightings = results;
-        console.log(results);
+        this.ufoSummary = results;
       }, 
     (err) => {
       console.error(err);

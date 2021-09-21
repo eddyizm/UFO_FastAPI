@@ -6,8 +6,8 @@
      
   </nb-layout-header>
 
-  <nb-sidebar class="menu-sidebar" responsive start>
-    <nb-menu [items]="items"></nb-menu>
+  <nb-sidebar class="menu-sidebar" responsive="true" start>
+    <nb-menu [items]="items" (click)="compactSidebar()"></nb-menu>
   </nb-sidebar>
 
 <nb-layout-column class="colored-column-basic .col-md-8">

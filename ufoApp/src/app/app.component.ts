@@ -52,5 +52,10 @@ export class AppComponent {
       this.sidebarService.toggle();
       return false;
     }
+
+    compactSidebar(): boolean {
+      this.sidebarService.compact();
+      return false;
+    }
   
 }

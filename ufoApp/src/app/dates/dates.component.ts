@@ -35,12 +35,11 @@ export class DatesComponent implements OnInit {
             ];
         this.data.pop() // what a hack this is. 
         this.ufoMY.forEach( each => {
-          //console.log(each);
-          var p = {
-            data: { month_year: each.month_year, count: each.count },
-          };
-          this.data.push(p);
-          
+        //console.log(each);
+        var p = {
+          data: { month_year: each.month_year, count: each.count },
+        };
+        this.data.push(p);
         })
         
       });

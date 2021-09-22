@@ -14,24 +14,26 @@ export class SummaryComponent implements OnInit {
   // tree grid table vars
   allColumns = ['id', 'summary', 'city', 'state', 'date_time'];
   data: TreeNode<ufo_summary>[];
+  st: string;
+  my: string;
 
   ufoSummary: ufo_summary[];
 
   constructor(private route: ActivatedRoute, private ufoService: UfoapiService) { }
 
   ngOnInit(): void {
-    
     this.route.queryParams.subscribe
       (params => {
-        this.load(params['myear']);
+        this.my = params['myear'] ?? '';
+        this.st = params['st'] ?? '';
+        this.load(this.st, this.my);
       });
   }
 
-  load(myear: string) {
-    this.ufoService.getSummary('', myear).subscribe(
+  load(state: string, myear: string) {
+    this.ufoService.getSummary(state, myear).subscribe(
       (result) => {
         this.ufoSummary = result;
-        console.log(this.ufoSummary);
         this.data = [
           {data: { id: 0, summary: '', city: '', state: '', date_time: '' },
         },

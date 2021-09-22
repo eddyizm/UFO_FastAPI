@@ -26,16 +26,16 @@ export class AppComponent {
       icon: 'calendar',
       link: '/dates'
     },
-    {
-      title: 'By Shape',
-      icon: 'navigation-2',
-      link: '/shape'
-    },
-    {
-      title: 'Report Sighting',
-      icon: 'phone',
-      link: '/report'
-    },
+    // {
+    //   title: 'By Shape',
+    //   icon: 'navigation-2',
+    //   link: '/shape'
+    // },
+    // {
+    //   title: 'Report Sighting',
+    //   icon: 'phone',
+    //   link: '/report'
+    // },
     {
       title: 'Site',
       icon: 'browser',

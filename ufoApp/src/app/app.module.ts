@@ -16,7 +16,6 @@ import { DatesComponent } from './dates/dates.component';
 import { ShapesComponent } from './shapes/shapes.component';
 import { SiteComponent } from './site/site.component';
 import { NewSightingComponent } from './new-sighting/new-sighting.component';
-import { LocationListComponent } from './location-list/location-list.component';
 import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
@@ -28,7 +27,6 @@ import { SummaryComponent } from './summary/summary.component';
     ShapesComponent,
     SiteComponent,
     NewSightingComponent,
-    LocationListComponent,
     SummaryComponent
   ],
   imports: [
@@ -51,7 +49,6 @@ import { SummaryComponent } from './summary/summary.component';
     RouterModule.forRoot([
       { path: 'home', component: BaseComponent, pathMatch: 'full' },
       { path: 'locations', component: LocationsComponent },
-      { path: 'locations/:state', component: LocationListComponent },
       { path: 'summary', component: SummaryComponent },
       { path: 'dates', component: DatesComponent },
       { path: 'shape', component: ShapesComponent },

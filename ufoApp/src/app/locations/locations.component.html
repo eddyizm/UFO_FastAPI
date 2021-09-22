@@ -7,7 +7,9 @@
         > State: {{ locations[i + 0].fullstate }}  
         </nb-card-header>
         <nb-card-body> 
-          Sightings: <a [routerLink]="'/locations/'+[locations[i + 0].state]"> {{ locations[i + 0].count }}</a>
+          Sightings: <a [routerLink]="['/summary']" 
+          [queryParams]="{ st: [locations[i + 0].state]}" > 
+          {{ locations[i + 0].count }}</a>
         </nb-card-body>
       </nb-card>
     </div>
@@ -17,7 +19,9 @@
           State: {{ locations[i + 1].fullstate }}
         </nb-card-header>
         <nb-card-body> 
-          Sightings: <a [routerLink]="'/locations/'+[locations[i + 1].state]"> {{ locations[i + 1].count }}</a>
+          Sightings: <a [routerLink]="['/summary']" 
+          [queryParams]="{ st: [locations[i + 1].state]}" > 
+          {{ locations[i + 1].count }}</a>
         </nb-card-body>
       </nb-card>
     </div>

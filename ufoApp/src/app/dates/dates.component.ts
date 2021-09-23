@@ -4,9 +4,11 @@ import { UfoapiService } from '../services/ufoapi.service';
 import { TreeNode } from '../models/treenode';
 
 
+
 @Component({
   selector: 'app-dates',
   templateUrl: './dates.component.html',
+  
   styleUrls: ['./dates.component.scss']
 })
 export class DatesComponent implements OnInit {
@@ -14,8 +16,9 @@ export class DatesComponent implements OnInit {
   public ufoMY: UFO_Dates[];
   allColumns = [ 'month_year', 'count' ];
   data: TreeNode<UFO_Dates>[];
+  loading = false;
   
-  constructor(private ufoService: UfoapiService ) { 
+  constructor(private ufoService: UfoapiService) { 
     }
 
   ngOnInit(): void {
@@ -23,6 +26,7 @@ export class DatesComponent implements OnInit {
   }
 
   load() {
+    this.loading = true;
     this.ufoService.getLocateDateList()
       .subscribe(
         (result) => {
@@ -35,16 +39,16 @@ export class DatesComponent implements OnInit {
             ];
         this.data.pop() // what a hack this is. 
         this.ufoMY.forEach( each => {
-        //console.log(each);
         var p = {
           data: { month_year: each.month_year, count: each.count },
         };
         this.data.push(p);
         })
-        
+        this.loading = false;
       });
+    
       
   }
-  
+
 
 }

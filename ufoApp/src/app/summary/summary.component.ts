@@ -16,6 +16,7 @@ export class SummaryComponent implements OnInit {
   data: TreeNode<ufo_summary>[];
   st: string;
   my: string;
+  loading = false;
 
   ufoSummary: ufo_summary[];
 
@@ -31,6 +32,7 @@ export class SummaryComponent implements OnInit {
   }
 
   load(state: string, myear: string) {
+    this.loading = true;
     this.ufoService.getSummary(state, myear).subscribe(
       (result) => {
         this.ufoSummary = result;
@@ -46,9 +48,7 @@ export class SummaryComponent implements OnInit {
           this.data.push(p)
 
         })
-
-
-
+        this.loading = false;
       }
     )
 

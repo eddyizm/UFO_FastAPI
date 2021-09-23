@@ -1,17 +1,21 @@
 
 <button nbButton outline shape="round" (click)="random()" status="primary">Load a Random Sighting</button>
 <br><br>
-<nb-card accent="info" class="hdr-image">
-  <nb-card-header >
+<nb-card accent="info" class="hdr-image"
+  [nbSpinner]="loading"
+  nbSpinnerStatus="success"
+  nbSpinnerSize="large"
+  nbSpinnerMessage="loading data ...">
+  <nb-card-header *ngIf="!loading" >
      <img src={{imagePath}}> 
      <p>shape: {{ ufoSighting?.shape }}</p>
   </nb-card-header>
-  <nb-card-body>
+  <nb-card-body *ngIf="!loading">
     <p>Summary: {{ ufoSighting?.summary }}</p>
     <p>Details: {{ ufoSighting?.text }}</p>
     
   </nb-card-body>
-  <nb-card-footer>Date: {{ ufoSighting?.date_time }} <br>
+  <nb-card-footer *ngIf="!loading">Date: {{ ufoSighting?.date_time }} <br>
     City: {{ ufoSighting?.city }} <br>
     State: {{ ufoSighting?.state }}
   </nb-card-footer>

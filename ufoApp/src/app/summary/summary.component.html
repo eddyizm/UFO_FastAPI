@@ -1,5 +1,11 @@
-<nb-card>
-  <nb-card-body>
+<nb-card accent="info" >
+  <nb-card-body [nbSpinner]="loading"
+  nbSpinnerStatus="success"
+  nbSpinnerSize="large"
+  nbSpinnerMessage="loading data ...">
+  Summary
+  </nb-card-body>
+  <nb-card-body *ngIf="!loading">
     <table [nbTreeGrid]="data" equalColumnsWidth>
       <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
       <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>

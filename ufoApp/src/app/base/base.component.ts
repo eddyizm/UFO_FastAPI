@@ -10,6 +10,7 @@ export class BaseComponent implements OnInit {
 
   ufoSighting: UFO;
   imagePath: string;
+  loading = false;
  
   constructor(private ufoService: UfoapiService) { }
 
@@ -19,18 +20,20 @@ export class BaseComponent implements OnInit {
 
   public random(): void
   {
+    this.loading = true;
     this.ufoService.getRandomUFO().subscribe(
         (result) => {
           this.ufoSighting = result;
           if (result.shape == '')
           { result.shape = 'unknown'}
           this.imagePath = `/assets/images/${result.shape}.jpg`
-          console.log(this.imagePath)
+          this.loading = false;
         },
         (err) => {
           return console.error(err);
         }
       );
+      this.loading = false;
   }
 
 }

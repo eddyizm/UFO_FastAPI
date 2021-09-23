@@ -72,6 +72,8 @@ export class LocationsComponent implements OnInit {
    'INTL': 'International'
   }
 
+  loading = false;
+
   constructor(private ufoService: UfoapiService) {}
 
   ngOnInit(): void {
@@ -79,12 +81,14 @@ export class LocationsComponent implements OnInit {
   }
 
   load() {
+    this.loading = true;
     this.ufoService.getLocations()
       .subscribe(result => {
         this.locations = result;
         for (var index in this.locations){
           this.locations[index].fullstate = this.stateHash[this.locations[index].state];
       }
+      this.loading = false;
       });
       
   }

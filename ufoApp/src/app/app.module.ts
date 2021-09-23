@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, 
   NbButtonModule, NbIconModule, NbMenuModule, NbSearchModule, NbSpinnerModule,
-  NbListModule, NbTreeGridModule } from '@nebular/theme';
+  NbListModule, NbTreeGridModule, NbSpinnerComponent } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { BaseComponent } from './base/base.component';
 import { LocationsComponent } from './locations/locations.component';
@@ -56,7 +56,7 @@ import { SummaryComponent } from './summary/summary.component';
       { path: 'site', component: SiteComponent },
     ])
   ],
-  providers: [],
+  providers: [ NbSpinnerComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

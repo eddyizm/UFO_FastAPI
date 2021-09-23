@@ -1,27 +1,26 @@
-<nb-card>
-    <nb-card-body>
-
-      <table [nbTreeGrid]="data" equalColumnsWidth>
-
+<nb-card accent="info" >
+<nb-card-body [nbSpinner]="loading"
+nbSpinnerStatus="success"
+nbSpinnerSize="large"
+nbSpinnerMessage="loading data ...">
+Sightings sorted by date.
+</nb-card-body>
+    <nb-card-body *ngIf="!loading">
+      <table [nbTreeGrid]="data" equalColumnsWidth >
         <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
         <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
-
         <ng-container nbTreeGridColumnDef="month_year">
           <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>date</th>
           <td nbTreeGridCell *nbTreeGridCellDef="let row">
-            
             <a [routerLink]="['/summary']" [queryParams]="{ myear: row.data.month_year}"> {{row.data.month_year}}</a> 
           </td>
           
         </ng-container>
-
         <ng-container nbTreeGridColumnDef="count" [hideOn]="600">
           <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>count</th>
           <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data.count}}</td>
         </ng-container>
-
-        
       </table>
-
-    </nb-card-body>
+   </nb-card-body>
   </nb-card>
+  

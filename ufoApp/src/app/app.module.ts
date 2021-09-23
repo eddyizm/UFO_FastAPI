@@ -10,6 +10,7 @@ import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule,
   NbButtonModule, NbIconModule, NbMenuModule, NbSearchModule, NbSpinnerModule,
   NbListModule, NbTreeGridModule, NbSpinnerComponent } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { BaseComponent } from './base/base.component';
 import { LocationsComponent } from './locations/locations.component';
 import { DatesComponent } from './dates/dates.component';
@@ -44,9 +45,11 @@ import { SummaryComponent } from './summary/summary.component';
     NbSpinnerModule,
     NbListModule,
     NbTreeGridModule,
+    Ng2SmartTableModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     RouterModule.forRoot([
+      { path: '', component: BaseComponent, pathMatch: 'full' },
       { path: 'home', component: BaseComponent, pathMatch: 'full' },
       { path: 'locations', component: LocationsComponent },
       { path: 'summary', component: SummaryComponent },
@@ -59,5 +62,5 @@ import { SummaryComponent } from './summary/summary.component';
   providers: [ NbSpinnerComponent ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
 
+export class AppModule { }

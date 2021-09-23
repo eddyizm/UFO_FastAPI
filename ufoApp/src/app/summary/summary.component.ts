@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 import { TheadTitlesRowComponent } from 'ng2-smart-table/lib/components/thead/rows/thead-titles-row.component';
 import { ufo_summary } from '../models/summary';
-import { TreeNode } from '../models/treenode';
+//import { TreeNode } from '../models/treenode';
 import { UfoapiService } from '../services/ufoapi.service';
 
 

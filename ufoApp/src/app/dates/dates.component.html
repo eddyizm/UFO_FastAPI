@@ -16,7 +16,7 @@ Sightings sorted by date.
           </td>
           
         </ng-container>
-        <ng-container nbTreeGridColumnDef="count" [hideOn]="600">
+        <ng-container nbTreeGridColumnDef="count" >
           <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>count</th>
           <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data.count}}</td>
         </ng-container>

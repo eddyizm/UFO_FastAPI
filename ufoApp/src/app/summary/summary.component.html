@@ -3,11 +3,12 @@
   nbSpinnerStatus="success"
   nbSpinnerSize="large"
   nbSpinnerMessage="loading data ...">
-  <h4>Summary</h4> reports: {{records}}
+  <h4>Summary for {{ sum }} </h4> reports: {{records}}
   </nb-card-body>
   <nb-card-body >
-    <ng2-smart-table [settings]="settings" >
-      
+    <ng2-smart-table 
+      [settings]="settings"  
+      [source]="data">
     </ng2-smart-table>
   </nb-card-body>
 </nb-card>

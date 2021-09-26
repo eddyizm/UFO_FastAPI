@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
-import { TheadTitlesRowComponent } from 'ng2-smart-table/lib/components/thead/rows/thead-titles-row.component';
+import { LocalDataSource } from 'ng2-smart-table';
+import { States } from '../models/states';
 import { ufo_summary } from '../models/summary';
-//import { TreeNode } from '../models/treenode';
 import { UfoapiService } from '../services/ufoapi.service';
 
 
@@ -14,30 +13,32 @@ import { UfoapiService } from '../services/ufoapi.service';
 })
 export class SummaryComponent implements OnInit {
 
-  // tree grid table vars
-  // allColumns = ['summary', 'city', 'state', 'date_time'];
-  data: ufo_summary[];
+  // ng2 smart table
+  states = new States()
   st: string;
   my: string;
+  sum: string;
   loading = false;
   records = 0;
 
   ufoSummary: ufo_summary[];
   // ng2 smart table
-  source: LocalDataSource; 
+  data: LocalDataSource; 
   settings = {
+    actions: 'false'
+      ,
     columns: {
-      id: {
-        title: 'summary'
+      summary: {
+        title: 'Summary'
       },
-      name: {
-        title: 'city'
+      city: {
+        title: 'City'
       },
-      username: {
-        title: 'state'
+      state: {
+        title: 'State'
       },
-      email: {
-        title: 'date_time'
+      date_time: {
+        title: 'Date'
       }
     }
   };
@@ -46,6 +47,7 @@ export class SummaryComponent implements OnInit {
         private ufoService: UfoapiService) { }
 
   ngOnInit(): void {
+    this.data = new LocalDataSource();
     this.route.queryParams.subscribe
       (params => {
         this.my = params['myear'] ?? '';
@@ -60,23 +62,14 @@ export class SummaryComponent implements OnInit {
       (result) => {
         this.ufoSummary = result;
         this.records = this.ufoSummary.length;
-        this.data = result;
-        // this.data = [
-        //   {data: { id: 0, summary: '', city: '', state: '', date_time: '' },
-        // },
-        // ];
-        // this.data.pop();
-        // this.ufoSummary.forEach( each => {
-        //   var p = {data: 
-        //     { id: each.id, summary: each.summary, city: each.city, state: each.state, date_time: each.date_time },
-        //   }
-        //   this.data.push(p)
-
-        // })
+        this.data.load(this.ufoSummary);
+        this.sum = (this.my === '') ? this.states.stateHash[this.st]: this.my;
         this.loading = false;
       }
     )
 
   }
+
+  
 
 }

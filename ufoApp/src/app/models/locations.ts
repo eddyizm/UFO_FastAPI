@@ -3,4 +3,3 @@ export interface ufo_locations {
     count: number,
     fullstate: string
 }
-    

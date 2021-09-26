@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, 
   NbButtonModule, NbIconModule, NbMenuModule, NbSearchModule, NbSpinnerModule,
-  NbListModule, NbTreeGridModule, NbSpinnerComponent } from '@nebular/theme';
+  NbListModule, NbSpinnerComponent } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { BaseComponent } from './base/base.component';
@@ -18,6 +18,7 @@ import { ShapesComponent } from './shapes/shapes.component';
 import { SiteComponent } from './site/site.component';
 import { NewSightingComponent } from './new-sighting/new-sighting.component';
 import { SummaryComponent } from './summary/summary.component';
+import { LinkviewComponent } from './linkview/linkview.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SummaryComponent } from './summary/summary.component';
     ShapesComponent,
     SiteComponent,
     NewSightingComponent,
-    SummaryComponent
+    SummaryComponent,
+    LinkviewComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,6 @@ import { SummaryComponent } from './summary/summary.component';
     NbSearchModule,
     NbSpinnerModule,
     NbListModule,
-    NbTreeGridModule,
     Ng2SmartTableModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),

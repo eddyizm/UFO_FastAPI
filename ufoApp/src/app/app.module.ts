@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, 
   NbButtonModule, NbIconModule, NbMenuModule, NbSearchModule, NbSpinnerModule,
-  NbListModule, NbSpinnerComponent } from '@nebular/theme';
+  NbListModule, NbSpinnerComponent, NbAccordionModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { BaseComponent } from './base/base.component';
@@ -47,6 +47,7 @@ import { LinkviewComponent } from './linkview/linkview.component';
     NbSpinnerModule,
     NbListModule,
     Ng2SmartTableModule,
+    NbAccordionModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     RouterModule.forRoot([

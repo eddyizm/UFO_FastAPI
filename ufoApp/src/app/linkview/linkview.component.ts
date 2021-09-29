@@ -11,7 +11,7 @@ export class LinkviewComponent implements  ViewCell, OnInit {
   @Input() value: string | number;
   @Input() rowData: any;
   
-  @Output() save: EventEmitter = new EventEmitter();
+  @Output() save: EventEmitter<any> = new EventEmitter();
   
   constructor() { }
 

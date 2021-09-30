@@ -26,11 +26,6 @@ export class DatesComponent implements OnInit {
         title: 'Month/Year',
         type: 'custom',
         renderComponent: LinkviewComponent,
-        // type: 'html',
-        // valuePrepareFunction: (row) => {
-        //   // <a [routerLink]="['/summary']" [queryParams]="{ myear: row.data.month_year}"> {{row.data.month_year}}</a> 
-        //   return `<a href="/summary?myear=${row}">${row}</a>`;                   
-        // }, 
         filter: false
 
       },

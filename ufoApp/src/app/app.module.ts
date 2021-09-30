@@ -19,6 +19,7 @@ import { SiteComponent } from './site/site.component';
 import { NewSightingComponent } from './new-sighting/new-sighting.component';
 import { SummaryComponent } from './summary/summary.component';
 import { LinkviewComponent } from './linkview/linkview.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LinkviewComponent } from './linkview/linkview.component';
     SiteComponent,
     NewSightingComponent,
     SummaryComponent,
-    LinkviewComponent
+    LinkviewComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,7 @@ import { LinkviewComponent } from './linkview/linkview.component';
       { path: 'home', component: BaseComponent, pathMatch: 'full' },
       { path: 'locations', component: LocationsComponent },
       { path: 'summary', component: SummaryComponent },
+      { path: 'detail/:id', component: DetailComponent },
       { path: 'dates', component: DatesComponent },
       { path: 'shape', component: ShapesComponent },
       { path: 'report', component: NewSightingComponent },

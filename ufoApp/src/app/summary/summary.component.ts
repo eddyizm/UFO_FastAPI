@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
 import { States } from '../models/states';
 import { ufo_summary } from '../models/summary';
@@ -23,13 +23,15 @@ export class SummaryComponent implements OnInit {
 
   ufoSummary: ufo_summary[];
   // ng2 smart table
-  data: LocalDataSource; 
+  data: LocalDataSource;
   settings = {
     actions: 'false'
-      ,
+    ,
     columns: {
-      summary: {
+      summary:
+      {
         title: 'Summary'
+
       },
       city: {
         title: 'City'
@@ -43,8 +45,8 @@ export class SummaryComponent implements OnInit {
     }
   };
 
-  constructor(private route: ActivatedRoute, 
-        private ufoService: UfoapiService) { }
+  constructor(private route: ActivatedRoute, private router: Router,
+    private ufoService: UfoapiService) { }
 
   ngOnInit(): void {
     this.data = new LocalDataSource();
@@ -63,13 +65,15 @@ export class SummaryComponent implements OnInit {
         this.ufoSummary = result;
         this.records = this.ufoSummary.length;
         this.data.load(this.ufoSummary);
-        this.sum = (this.my === '') ? this.states.stateHash[this.st]: this.my;
+        this.sum = (this.my === '') ? this.states.stateHash[this.st] : this.my;
         this.loading = false;
       }
     )
 
   }
 
-  
+  onSelectRow(event) {
+    this.router.navigateByUrl(`/detail/${event.data.id}`);
+  }
 
 }

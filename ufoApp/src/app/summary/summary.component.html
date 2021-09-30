@@ -3,12 +3,12 @@
   nbSpinnerStatus="success"
   nbSpinnerSize="large"
   nbSpinnerMessage="loading data ...">
-  <h4>Summary for {{ sum }} </h4> reports: {{records}}
+  <h4>Summary for {{ sum }} </h4> reports: {{records}} (click to view detail)
   </nb-card-body>
   <nb-card-body >
     <ng2-smart-table 
       [settings]="settings"  
-      [source]="data">
+      [source]="data" (userRowSelect)="onSelectRow($event)">
     </ng2-smart-table>
   </nb-card-body>
 </nb-card>

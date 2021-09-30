@@ -16,6 +16,10 @@ export class UfoapiService {
   constructor(private http: HttpClient) 
   {}
 
+  getUFODetail(id: string): Observable<UFO> {
+    return this.http.get<UFO>(`${BASE_URL}sightings-by-id/${id}`);
+  }
+
   getRandomUFO(): Observable<UFO> {
     return this.http.get<UFO>(`${BASE_URL}sighting-random/`);
   }

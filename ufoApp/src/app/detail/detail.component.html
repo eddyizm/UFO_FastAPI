@@ -1,19 +1,23 @@
-
 <nb-card accent="info">
     <nb-card-header *ngIf="!loading">
         <img src={{imagePath}} > 
-        <p>shape: {{ detail?.shape }}</p>
+        <div class="infos"> ID: {{ detail?.id }} </div>
+        <p class="infos">shape: {{ detail?.shape }}</p>
      </nb-card-header>
     <nb-card-body *ngIf="!loading"
     [nbSpinner]="loading"
     nbSpinnerStatus="success"
     nbSpinnerSize="large"
     nbSpinnerMessage="loading data ...">
-       <p>Date/Time: {{ detail?.date_time }}</p>
-       <p>Details: {{ detail?.text }}</p>
+       <p>Date/Time: {{ detail?.date_time | date:'short' }}</p>
+       <div class="infos"> Duration: {{ detail?.duration }} </div>
+       <p>Full Report: {{ detail?.text }}</p>
     </nb-card-body>
     <nb-card-footer *ngIf="!loading">
-        City: {{ detail?.city }} <br>
-        State: {{ detail?.state }}
+        
+            <div class="infos"> City: {{ detail?.city }} </div>
+            <div class="infos"> State: {{ detail?.state }} </div>
+            <div class="infos"> Latitude: {{ detail?.city_latitude }} Longitude: {{ detail?.city_longitude }}</div>
+            
       </nb-card-footer>
 </nb-card>

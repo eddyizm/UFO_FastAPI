@@ -12,7 +12,8 @@
   </nb-card-header>
   <nb-card-body *ngIf="!loading">
     <p>Summary: {{ ufoSighting?.summary }}</p>
-    <p>Details: {{ ufoSighting?.text }}</p>
+    <p>Read more <a [routerLink]="['/detail', (ufoSighting?.id) ]" 
+      >here</a></p>
     
   </nb-card-body>
   <nb-card-footer *ngIf="!loading">Date: {{ ufoSighting?.date_time }} <br>

@@ -1,6 +1,6 @@
 <nb-card accent="info">
     <nb-card-header *ngIf="!loading">
-        <img src={{imagePath}} > 
+        <img class="mimg" src={{imagePath}} > 
         <div class="infos"> ID: {{ detail?.id }} </div>
         <p class="infos">shape: {{ detail?.shape }}</p>
      </nb-card-header>
@@ -12,8 +12,7 @@
        <p>Date/Time: {{ detail?.date_time | date:'short' }}</p>
        <div class="infos"> Duration: {{ detail?.duration }} </div>
        <p>Full Report: {{ detail?.text }}</p>
-       <p>Stats: {{ detail?.stats }}</p>
-    </nb-card-body>
+     </nb-card-body>
     <nb-card-footer *ngIf="!loading">
         
             <div class="infos"> City: {{ detail?.city }} </div>

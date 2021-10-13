@@ -18,8 +18,10 @@
             <div class="infos"> City: {{ detail?.city }} </div>
             <div class="infos"> State: {{ detail?.state }} </div>
             <div class="infos"> Latitude: {{ detail?.city_latitude }} Longitude: {{ detail?.city_longitude }}</div>
-            <div><a [routerLink]="['/detail', (detail?.id-1) ]" 
-                 > previous</a> | share | <a [routerLink]="['/detail', (detail?.id + 1) ]" 
-                 >next</a></div>
+            <div>
+                <a [routerLink]="['/detail', (detail?.id - 1) ]" > previous</a> 
+                  | share | 
+                 <a [routerLink]="['/detail', (detail?.id + 1) ]" >next</a>
+            </div>
       </nb-card-footer>
 </nb-card>

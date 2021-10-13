@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UFO } from '../models/ufo';
 import { UfoapiService } from '../services/ufoapi.service';
 
@@ -14,11 +14,15 @@ export class DetailComponent implements OnInit {
   loading: boolean = false;
   imagePath: string;
   detail: UFO;
-  constructor(private ufoService: UfoapiService, private route: ActivatedRoute) { }
+  constructor(private ufoService: UfoapiService, private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get("id");
     this.loadDetail(this.id);
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
   }
 
   loadDetail(id: string){

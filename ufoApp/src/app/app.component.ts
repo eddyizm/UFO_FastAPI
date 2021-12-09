@@ -31,17 +31,17 @@ export class AppComponent {
     //   icon: 'navigation-2',
     //   link: '/shape'
     // },
-    // {
-    //   title: 'Report Sighting',
-    //   icon: 'phone',
-    //   link: '/report'
-    // },
+    {
+      title: 'Report Sighting',
+      icon: 'phone',
+      link: '/report'
+    },
     {
       title: 'Site',
       icon: 'browser',
       link: '/site'
     }
-
+    //edit-outline
   ];
 
   constructor(private readonly sidebarService: NbSidebarService) {

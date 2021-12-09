@@ -2,13 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, 
   NbButtonModule, NbIconModule, NbMenuModule, NbSearchModule, NbSpinnerModule,
-  NbListModule, NbSpinnerComponent, NbAccordionModule } from '@nebular/theme';
+  NbListModule, NbSpinnerComponent, NbAccordionModule, NbInputModule,
+  NbSelectModule  } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { BaseComponent } from './base/base.component';
@@ -39,6 +40,8 @@ import { DetailComponent } from './detail/detail.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     NbThemeModule.forRoot({ name: 'cosmic' }),
     NbLayoutModule,
     NbEvaIconsModule,
@@ -50,6 +53,8 @@ import { DetailComponent } from './detail/detail.component';
     NbListModule,
     Ng2SmartTableModule,
     NbAccordionModule,
+    NbInputModule,
+    NbSelectModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     RouterModule.forRoot([

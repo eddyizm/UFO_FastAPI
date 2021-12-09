@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UFO } from '../models/ufo';
 import { UfoapiService } from '../services/ufoapi.service';
 @Component({
@@ -12,10 +13,13 @@ export class BaseComponent implements OnInit {
   imagePath: string;
   loading = false;
  
-  constructor(private ufoService: UfoapiService) { }
+  constructor(private ufoService: UfoapiService, private router: Router) { }
 
   ngOnInit(): void {
     this.random();
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
   }
 
   public random(): void

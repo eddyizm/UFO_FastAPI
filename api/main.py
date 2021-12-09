@@ -3,7 +3,7 @@ from schema.DAL import database
 from routers import sightings
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
-
+    
 app = FastAPI()
 
 origins = [

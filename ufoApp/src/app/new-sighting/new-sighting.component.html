@@ -1,1 +1,47 @@
-<p>new-sighting works!</p>
+
+<nb-card>
+    <nb-card-body >
+        <form [formGroup]="newSightingForm" (ngSubmit)="onSubmit()">   
+        <div>
+            Event Duration: <input type="text" nbInput placeholder="time!">
+        </div>
+        <div>
+            City: <input 
+            formControlName="City"
+            type="text" nbInput placeholder="eg. Los Angeles">
+        </div>
+        <div>
+            State Province: <nb-select placeholder="eg. CA/Alberta" [(selected)]="selectedItem">
+            <nb-option value="">Option empty</nb-option>
+            <nb-option value="0">Option 0</nb-option>
+            <nb-option value="1">Option 1</nb-option>
+            <nb-option value="2">Option 2</nb-option>
+            <nb-option value="3">Option 3</nb-option>
+            <nb-option value="4">Option 4</nb-option>
+          </nb-select>
+        </div>              
+        <div>
+            Zip Code: <input 
+            formControlName="ZipCode"
+            type="text" nbInput placeholder="eg. 99999">
+        </div>
+        <div>
+            Foreign Country: <input 
+            formControlName="ForeignCountry"
+            type="text" nbInput placeholder="eg. Japan">
+        </div>
+        <div>
+            Report: <textarea 
+            formControlName="Report"
+            nbInput placeholder="Details"></textarea>
+        </div>
+        <div>
+            <button nbButton>submit</button><a href="#">clear form</a>
+        </div>
+    </form>
+    </nb-card-body>
+  </nb-card>
+
+    
+
+

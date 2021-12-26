@@ -24,7 +24,7 @@ git clone https://github.com/eddyizm/UFO_FastAPI.git
 
 ## Set up Python Environment
 
-Create a virtual environment for this project where `env` is the name of the new virtual environment aka folder. You can name this anything you want but make it is in your `.gitignore` so you don't check it into source control.
+Create a virtual environment for this project where `env` is the name of the new virtual environment aka folder. You can name this anything you want but make sure it is in your `.gitignore` so you don't check it into source control.
 
 ``` 
 # change directory into new repo

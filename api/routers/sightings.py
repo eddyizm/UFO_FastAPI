@@ -1,14 +1,27 @@
 '''
 All the ufo sightings come from here
 '''
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from typing import List, Optional
-from schema.DAL import DATABASE_URL, ufo_sightings, database
-from schema.models import UFO_Locations, UFO_Reports, UFO_Summary, UFO_Dates
+from schema.DAL import DATABASE_URL, ufo_sightings, database, new_ufos
+from schema.models import UFO_Locations, UFO_Reports, UFO_Summary, UFO_Dates, New_UFO
 from sqlalchemy import select, func
 from datetime import datetime
 
 router = APIRouter()
+
+# report sighting
+@router.post("/sighting/", status_code=status.HTTP_201_CREATED)
+async def new_sighting(nUFO: New_UFO):
+    ''' report new sighting'''
+    query = new_ufos.insert().values(city = nUFO.city,
+        event_duration = nUFO.event_duration,
+        state = nUFO.state,
+        zip = nUFO.zip,
+        country = nUFO.country,
+        report = nUFO.report)
+    result = await database.execute(query)
+    return f"created new ufo with id {result}"
 
 
 # TODO add paging style? 

@@ -32,6 +32,20 @@ ufo_sightings = sqlalchemy.Table(
     sqlalchemy.Column("city_longitude", sqlalchemy.String)    
 )
 
+
+new_ufos = sqlalchemy.Table(
+    "new_ufos",
+    metadata,
+    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
+    sqlalchemy.Column("city", sqlalchemy.String),
+    sqlalchemy.Column("state", sqlalchemy.String),
+    sqlalchemy.Column("report", sqlalchemy.String),    
+    sqlalchemy.Column("zip", sqlalchemy.String),
+    sqlalchemy.Column("country", sqlalchemy.String),
+    sqlalchemy.Column("event_duration", sqlalchemy.String),
+)
+
+
 metadata.create_all(engine)
 
 # async def get_db():

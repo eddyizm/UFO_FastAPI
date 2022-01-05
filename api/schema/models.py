@@ -5,6 +5,14 @@ Guess I'm following a django pattern?
 from typing import Optional
 from pydantic import BaseModel
 
+class New_UFO(BaseModel):
+    event_duration: str
+    city: str
+    state: str
+    zip: str
+    country: str
+    report: str
+
 
 class UFO_Summary(BaseModel):
     id: int

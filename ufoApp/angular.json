@@ -66,8 +66,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ufoApp:build",
-            "proxyConfig": "src/proxy.conf.json"
+            "browserTarget": "ufoApp:build"
           },
           "configurations": {
             "production": {

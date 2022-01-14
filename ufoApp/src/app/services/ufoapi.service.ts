@@ -6,7 +6,7 @@ import { ufo_locations } from '../models/locations';
 import { UFO_Dates} from '../models/ufo_dates';
 import { ufo_summary } from '../models/summary';
 
-const BASE_URL = 'http://127.0.0.1:8000/'
+const BASE_URL = 'http://localhost:8000/'
 
 @Injectable({
   providedIn: 'root'

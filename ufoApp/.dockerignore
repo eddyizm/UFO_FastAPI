@@ -1,0 +1,14 @@
+.git
+.firebase
+.editorconfig
+/node_modules
+/e2e
+/docs
+.gitignore
+*.zip
+*.md
+env/
+__pycache__/
+.vscode
+.mypy_cache/
+*.pyc

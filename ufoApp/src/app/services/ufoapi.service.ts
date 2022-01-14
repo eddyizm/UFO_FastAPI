@@ -6,8 +6,8 @@ import { ufo_locations } from '../models/locations';
 import { UFO_Dates} from '../models/ufo_dates';
 import { ufo_summary } from '../models/summary';
 
-//const BASE_URL = 'http://localhost:8000/'
-const BASE_URL = 'https://api.datacureservices.com/'
+//const BASE_URL = 'http://localhost:8000/' // DEV
+const BASE_URL = 'https://api.datacureservices.com/' //PROD
 
 @Injectable({
   providedIn: 'root'

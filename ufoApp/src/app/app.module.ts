@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, 
   NbButtonModule, NbIconModule, NbMenuModule, NbSearchModule, NbSpinnerModule,
   NbListModule, NbSpinnerComponent, NbAccordionModule, NbInputModule,
-  NbSelectModule  } from '@nebular/theme';
+  NbSelectModule, NbDatepickerModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { BaseComponent } from './base/base.component';
@@ -55,6 +55,7 @@ import { DetailComponent } from './detail/detail.component';
     NbAccordionModule,
     NbInputModule,
     NbSelectModule,
+    NbDatepickerModule.forRoot(),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     RouterModule.forRoot([

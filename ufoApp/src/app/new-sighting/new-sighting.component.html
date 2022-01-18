@@ -1,40 +1,44 @@
 
 <nb-card>
-    <nb-card-body >
-        <form [formGroup]="newSightingForm" (ngSubmit)="onSubmit()">   
-        <div>
-            Date: <input 
-            formControlName="TimeStamp"
-            type="text" nbInput placeholder="When?">
+    <nb-card-body>
+        <form  [formGroup]="newSightingForm" (ngSubmit)="onSubmit()">   
+        <div class="fInput"><label for="timestamp">
+            <span>Date: </span>
+            <input formControlName="TimeStamp" 
+            name="timestamp" required="true"
+            type="text" nbInput placeholder="When?"
+            [nbDatepicker]="datepicker">
+                <nb-datepicker #datepicker></nb-datepicker>
+        </label>
         </div>
-        <div>
+        <div class="fInput">
             City: <input 
             formControlName="City"
             type="text" nbInput placeholder="eg. Los Angeles">
         </div>
-        <div>
+        <div class="fInput">
             State Province: <nb-select placeholder="eg. CA/Alberta" [(selected)]="selectedItem">
                 <nb-option *ngFor="let c of statesList" [value]="c">
                       {{ c }}
                  </nb-option>
           </nb-select>
         </div>              
-        <div>
+        <div class="fInput">
             Zip Code: <input 
             formControlName="ZipCode"
             type="text" nbInput placeholder="eg. 99999">
         </div>
-        <div>
-            Foreign Country: <input 
+        <div class="fInput">
+            Country: <input 
             formControlName="ForeignCountry"
             type="text" nbInput placeholder="eg. Japan">
         </div>
-        <div>
+        <div class="fInput">
             Report: <textarea 
             formControlName="Report"
             nbInput placeholder="Details"></textarea>
         </div>
-        <div>
+        <div class="fInput">
             <button nbButton>submit</button><a href="#">clear form</a>
         </div>
     </form>

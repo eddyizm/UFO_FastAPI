@@ -3,7 +3,9 @@
     <nb-card-body >
         <form [formGroup]="newSightingForm" (ngSubmit)="onSubmit()">   
         <div>
-            Event Duration: <input type="text" nbInput placeholder="time!">
+            Date: <input 
+            formControlName="TimeStamp"
+            type="text" nbInput placeholder="When?">
         </div>
         <div>
             City: <input 
@@ -12,12 +14,9 @@
         </div>
         <div>
             State Province: <nb-select placeholder="eg. CA/Alberta" [(selected)]="selectedItem">
-            <nb-option value="">Option empty</nb-option>
-            <nb-option value="0">Option 0</nb-option>
-            <nb-option value="1">Option 1</nb-option>
-            <nb-option value="2">Option 2</nb-option>
-            <nb-option value="3">Option 3</nb-option>
-            <nb-option value="4">Option 4</nb-option>
+                <nb-option *ngFor="let c of statesList" [value]="c">
+                      {{ c }}
+                 </nb-option>
           </nb-select>
         </div>              
         <div>

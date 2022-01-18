@@ -7,6 +7,12 @@
 };
 /* You can add global styles to this file, and also import other style files */
 
+:host ::ng-deep .ng2-smart-filter input{
+  color:black !important;
+ }
+
+
 :host ::ng-deep .ng2-smart-filter{
   color:black;
-}
+ }
+

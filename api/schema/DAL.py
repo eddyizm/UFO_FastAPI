@@ -42,7 +42,7 @@ new_ufos = sqlalchemy.Table(
     sqlalchemy.Column("report", sqlalchemy.String),    
     sqlalchemy.Column("zip", sqlalchemy.String),
     sqlalchemy.Column("country", sqlalchemy.String),
-    sqlalchemy.Column("event_duration", sqlalchemy.String),
+    sqlalchemy.Column("date", sqlalchemy.String),
 )
 
 

@@ -14,8 +14,9 @@ router = APIRouter()
 @router.post("/sighting/", status_code=status.HTTP_201_CREATED)
 async def new_sighting(nUFO: New_UFO):
     ''' report new sighting'''
+    print('new request received: ', nUFO)
     query = new_ufos.insert().values(city = nUFO.city,
-        event_duration = nUFO.event_duration,
+        date = nUFO.date,
         state = nUFO.state,
         zip = nUFO.zip,
         country = nUFO.country,

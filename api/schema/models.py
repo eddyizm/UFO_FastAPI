@@ -2,11 +2,12 @@
 Models 
 Guess I'm following a django pattern?
 '''
+from sqlite3 import Date
 from typing import Optional
 from pydantic import BaseModel
 
 class New_UFO(BaseModel):
-    event_duration: str
+    date: str
     city: str
     state: str
     zip: str

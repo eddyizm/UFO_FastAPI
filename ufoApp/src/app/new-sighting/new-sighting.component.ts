@@ -67,4 +67,8 @@ export class NewSightingComponent implements OnInit {
       )
   }
 
+  public resetForm(){
+    this.newSightingForm.reset();
+    this.newSightingForm.markAsPristine();
+  }
 }

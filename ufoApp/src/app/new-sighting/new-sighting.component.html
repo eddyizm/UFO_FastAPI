@@ -1,50 +1,109 @@
-
 <nb-card>
-    <nb-card-body>
-        <form  [formGroup]="newSightingForm" (ngSubmit)="onSubmit()">   
-        <div class="fInput"><label for="timestamp">
-            <span>Date: </span>
-            <input formControlName="TimeStamp" 
-            name="timestamp" required="true"
-            type="text" nbInput placeholder="When?"
-            [nbDatepicker]="datepicker">
-                <nb-datepicker #datepicker></nb-datepicker>
-        </label>
+  <nb-card-body>
+    <form [formGroup]="newSightingForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-25">
+          <label for="timestamp"><span>Date: </span></label>
         </div>
-        <div class="fInput">
-            City: <input 
+        <div class="col-75">
+          <input
+            formControlName="TimeStamp"
+            name="timestamp"
+            required="true"
+            type="text"
+            nbInput 
+            fullWidth shape="semi-round"
+            placeholder="When?"
+            [nbDatepicker]="datepicker"
+          />
+          <nb-datepicker #datepicker></nb-datepicker>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="City"><span>City: </span></label>
+        </div>
+        <div class="col-75">
+          <input
             formControlName="City"
-            type="text" nbInput placeholder="eg. Los Angeles">
+            type="text"
+            name="City"
+            nbInput
+            fullWidth shape="semi-round"
+            placeholder="eg. Los Angeles"
+          />
         </div>
-        <div class="fInput">
-            State Province: <nb-select placeholder="eg. CA/Alberta" [(selected)]="selectedItem">
-                <nb-option *ngFor="let c of statesList" [value]="c">
-                      {{ c }}
-                 </nb-option>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="State"><span>State or Province: </span></label>
+        </div>
+        <div class="col-75">
+          <nb-select
+            name="State"
+            fullWidth shape="semi-round"
+            placeholder="eg. CA/Alberta"
+            [(selected)]="selectedItem"
+          >
+            <nb-option *ngFor="let c of statesList" [value]="c">
+              {{ c }}
+            </nb-option>
           </nb-select>
-        </div>              
-        <div class="fInput">
-            Zip Code: <input 
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="Zip"><span>Zip Code: </span></label>
+        </div>
+        <div class="col-75">
+          <input
             formControlName="ZipCode"
-            type="text" nbInput placeholder="eg. 99999">
+            type="text"
+            nbInput
+            fullWidth shape="semi-round"
+            placeholder="eg. 99999"
+          />
         </div>
-        <div class="fInput">
-            Country: <input 
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="Country"><span>Country: </span></label>
+        </div>
+        <div class="col-75">
+          <input
             formControlName="ForeignCountry"
-            type="text" nbInput placeholder="eg. Japan">
+            type="text"
+            nbInput
+            fullWidth shape="semi-round"
+            placeholder="eg. Japan"
+          />
         </div>
-        <div class="fInput">
-            Report: <textarea 
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="Report"><span>Report: </span></label>
+        </div>
+        <div class="col-75">
+          <textarea
             formControlName="Report"
-            nbInput placeholder="Details"></textarea>
+            rows="7"
+            nbInput
+            fullWidth shape="semi-round"
+            placeholder="Details"
+          ></textarea>
         </div>
-        <div class="fInput">
-            <button nbButton>submit</button><a href="#">clear form</a>
+      </div>
+      <div class="row">
+        <div class="col-25"></div>
+        <div class="col-75">
+          <div class="float-right">
+            <button nbButton status="primary">submit</button>
+            &nbsp;
+            <button nbButton status="basic" (click)="resetForm()">clear</button>
         </div>
+        </div>
+      </div>
     </form>
-    </nb-card-body>
-  </nb-card>
-
-    
-
-
+  </nb-card-body>
+</nb-card>

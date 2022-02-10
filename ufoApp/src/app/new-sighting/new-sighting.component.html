@@ -1,5 +1,8 @@
-<nb-card>
-  <nb-card-body>
+<nb-card [nbSpinner]="loading"
+nbSpinnerStatus="success"
+nbSpinnerSize="large"
+nbSpinnerMessage="contacting the mothership...">
+  <nb-card-body >
     <form [formGroup]="newSightingForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-25">

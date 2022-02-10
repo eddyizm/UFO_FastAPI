@@ -1,12 +1,13 @@
 import { Statement } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from "@angular/forms";
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, SelectMultipleControlValueAccessor } from "@angular/forms";
 import { NewUFO } from '../models/new_ufo';
 import { States } from '../models/states';
 import { UfoapiService } from '../services/ufoapi.service';
 
 @Component({
   selector: 'app-new-sighting',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './new-sighting.component.html',
   styleUrls: ['./new-sighting.component.scss']
 })
@@ -24,6 +25,7 @@ export class NewSightingComponent implements OnInit {
 
   selectedItem = '2';
   statesList = [];
+  loading = false;
 
   constructor(private ufoService: UfoapiService) { }
 
@@ -40,6 +42,7 @@ export class NewSightingComponent implements OnInit {
 
   onSubmit() {
     console.log('submit');
+    this.loading = true;   
     this.getQueryData(this.newSightingForm.get("City").value,
       this.newSightingForm.get("ZipCode").value,
       this.newSightingForm.get("Report").value,
@@ -47,6 +50,7 @@ export class NewSightingComponent implements OnInit {
       this.newSightingForm.get("State").value,
       this.newSightingForm.get("TimeStamp").value
     );
+    this.loading = false;
   }
 
   private async getQueryData(
@@ -57,14 +61,17 @@ export class NewSightingComponent implements OnInit {
     State: string,
     TimeStamp: string) 
     {
+      let res = "";
       let _formUFO: NewUFO = 
       { city: City, state: State, zip: ZipCode, country: ForeignCountry,
-        report: Report, date: TimeStamp} 
+        report: Report, date: TimeStamp}
       this.ufoService.reportNewUfo(_formUFO).subscribe(
         result => {
-          console.log(result);
-        }
-      )
+          result;
+          this.resetForm();
+          //this.loading = false;
+        } )
+      
   }
 
   public resetForm(){

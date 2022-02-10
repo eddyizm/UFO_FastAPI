@@ -7,6 +7,7 @@ from schema.DAL import DATABASE_URL, ufo_sightings, database, new_ufos
 from schema.models import UFO_Locations, UFO_Reports, UFO_Summary, UFO_Dates, New_UFO
 from sqlalchemy import select, func
 from datetime import datetime
+from time import sleep
 
 router = APIRouter()
 
@@ -15,6 +16,7 @@ router = APIRouter()
 async def new_sighting(nUFO: New_UFO):
     ''' report new sighting'''
     print('new request received: ', nUFO)
+    sleep(5)
     query = new_ufos.insert().values(city = nUFO.city,
         date = nUFO.date,
         state = nUFO.state,

@@ -1,7 +1,7 @@
 '''
 All the ufo sightings come from here
 '''
-from fastapi import APIRouter, status
+from fastapi import APIRouter, status, HTTPException
 from typing import List, Optional
 from schema.DAL import DATABASE_URL, ufo_sightings, database, new_ufos
 from schema.models import UFO_Locations, UFO_Reports, UFO_Summary, UFO_Dates, New_UFO
@@ -12,20 +12,22 @@ from time import sleep
 router = APIRouter()
 
 # report sighting
-@router.post("/sighting/", status_code=status.HTTP_201_CREATED)
+@router.post("/sighting/")
 async def new_sighting(nUFO: New_UFO):
     ''' report new sighting'''
     print('new request received: ', nUFO)
-    sleep(5)
-    query = new_ufos.insert().values(city = nUFO.city,
-        date = nUFO.date,
-        state = nUFO.state,
-        zip = nUFO.zip,
-        country = nUFO.country,
-        report = nUFO.report)
-    result = await database.execute(query)
-    return f"created new ufo with id {result}"
-
+    # sleep(3)
+    try:
+        query = new_ufos.insert().values(city = nUFO.city,
+            date = nUFO.date,
+            state = nUFO.state,
+            zip = nUFO.zip,
+            country = nUFO.country,
+            report = nUFO.report)
+        result = await database.execute(query)
+        return {'msg':'Successfully submitted'}
+    except HTTPException:
+        raise HTTPException
 
 # TODO add paging style? 
 @router.get("/sightings/", response_model=List[UFO_Reports])

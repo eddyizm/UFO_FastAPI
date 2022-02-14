@@ -1,13 +1,13 @@
-import { Statement } from '@angular/compiler';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, SelectMultipleControlValueAccessor } from "@angular/forms";
+import { FormGroup, FormControl} from "@angular/forms";
 import { NewUFO } from '../models/new_ufo';
 import { States } from '../models/states';
 import { UfoapiService } from '../services/ufoapi.service';
+import { NbToastrService, NbComponentStatus } from '@nebular/theme';
 
 @Component({
   selector: 'app-new-sighting',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  //changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './new-sighting.component.html',
   styleUrls: ['./new-sighting.component.scss']
 })
@@ -25,15 +25,15 @@ export class NewSightingComponent implements OnInit {
 
   selectedItem = '2';
   statesList = [];
-  loading = false;
+  loading: boolean = false;
 
-  constructor(private ufoService: UfoapiService) { }
+  constructor(private ufoService: UfoapiService, private toastrService: NbToastrService) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.loadStates();
   }
 
-  private loadStates(){
+  private loadStates() {
     let stList = new States();
     for (const st in stList.stateHash) {
       this.statesList.push(st);
@@ -41,41 +41,41 @@ export class NewSightingComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submit');
-    this.loading = true;   
-    this.getQueryData(this.newSightingForm.get("City").value,
-      this.newSightingForm.get("ZipCode").value,
-      this.newSightingForm.get("Report").value,
-      this.newSightingForm.get("ForeignCountry").value,
-      this.newSightingForm.get("State").value,
-      this.newSightingForm.get("TimeStamp").value
-    );
-    this.loading = false;
-  }
-
-  private async getQueryData(
-    City: string,
-    ZipCode: string,
-    Report: string,
-    ForeignCountry: string,
-    State: string,
-    TimeStamp: string) 
+    this.loading = true;
+    let _formUFO: NewUFO =
     {
-      let res = "";
-      let _formUFO: NewUFO = 
-      { city: City, state: State, zip: ZipCode, country: ForeignCountry,
-        report: Report, date: TimeStamp}
-      this.ufoService.reportNewUfo(_formUFO).subscribe(
-        result => {
-          result;
-          this.resetForm();
-          //this.loading = false;
-        } )
-      
+      city: this.newSightingForm.get("City").value,
+      state: this.newSightingForm.get("State").value,
+      zip: this.newSightingForm.get("ZipCode").value,
+      country: this.newSightingForm.get("ForeignCountry").value,
+      report: this.newSightingForm.get("Report").value,
+      date: this.newSightingForm.get("TimeStamp").value
+    }
+    this.ufoService.reportNewUfo(_formUFO).subscribe(
+      result => {
+        this.resetForm();
+        if (result.status == 200) {
+          this.showToast('success', result.body['msg']);
+          
+        }
+        else {
+          {
+            this.showToast('danger', "There was an issue. Please try again later. :-(");
+            
+          }
+        }
+        this.loading = false;
+      }
+      )
   }
 
-  public resetForm(){
+  public resetForm() {
     this.newSightingForm.reset();
     this.newSightingForm.markAsPristine();
+  }
+
+  showToast(status: NbComponentStatus, msg: String) {
+    this.toastrService.show(status, `${msg}`, { status });
+    
   }
 }

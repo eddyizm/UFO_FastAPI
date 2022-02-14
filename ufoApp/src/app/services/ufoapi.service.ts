@@ -7,7 +7,8 @@ import { UFO_Dates} from '../models/ufo_dates';
 import { ufo_summary } from '../models/summary';
 import { NewUFO } from '../models/new_ufo';
 
-const BASE_URL = 'http://localhost:8000/api/v1/' // DEV
+const BASE_URL = 'http://localhost:8000/' // DEV
+//const BASE_URL = 'http://localhost:8000/api/v1/' // DEV
 //const BASE_URL = 'https://api.datacureservices.com/' //PROD
 
 @Injectable({
@@ -19,7 +20,7 @@ export class UfoapiService {
   {}
 
   reportNewUfo(_ufo: NewUFO): Observable<any>{
-    return this.http.post(`${BASE_URL}sighting/`, _ufo);
+    return this.http.post(`${BASE_URL}sighting/`, _ufo, {observe: 'response'});
   }
 
   getUFODetail(id: string): Observable<UFO> {

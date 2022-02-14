@@ -60,7 +60,9 @@ ng add @nebular/theme
 ## Docker build  
 Change into the app directory and build nginx/node container
 
-```
-cd ufoApp
-docker build -t ufo-ng-app .  
-```
+`cd ufoApp  
+docker build -t ufo-ng-app .`
+
+Then run  
+`docker run ufo-ng-app`
+

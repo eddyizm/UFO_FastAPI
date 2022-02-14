@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, 
   NbButtonModule, NbIconModule, NbMenuModule, NbSearchModule, NbSpinnerModule,
-  NbListModule, NbSpinnerComponent, NbAccordionModule, NbInputModule,
+  NbListModule, NbSpinnerComponent, NbAccordionModule, NbInputModule, NbToastrModule,
   NbSelectModule, NbDatepickerModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
@@ -42,7 +42,8 @@ import { DetailComponent } from './detail/detail.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NbThemeModule.forRoot({ name: 'cosmic' }),
+    NbThemeModule.forRoot({ name: 'corporate' }),
+    
     NbLayoutModule,
     NbEvaIconsModule,
     NbCardModule,
@@ -55,6 +56,7 @@ import { DetailComponent } from './detail/detail.component';
     NbAccordionModule,
     NbInputModule,
     NbSelectModule,
+    NbToastrModule.forRoot(),
     NbDatepickerModule.forRoot(),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),

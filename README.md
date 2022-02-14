@@ -62,5 +62,6 @@ Change into the app directory and build nginx/node container
 
 ```  
 cd ufoApp
-docker build -t ufo-ng-app .
+docker build -t ufo-ng-app .  
+
 ```

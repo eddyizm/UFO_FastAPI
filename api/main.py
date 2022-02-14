@@ -4,7 +4,7 @@ from routers import sightings
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
     
-app = FastAPI()
+app = FastAPI(root_path="/api/v1")
 
 origins = [
     "http://localhost",

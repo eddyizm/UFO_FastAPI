@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl} from "@angular/forms";
+import { FormGroup, FormControl, Validators} from "@angular/forms";
 import { NewUFO } from '../models/new_ufo';
 import { States } from '../models/states';
 import { UfoapiService } from '../services/ufoapi.service';
@@ -15,12 +15,12 @@ export class NewSightingComponent implements OnInit {
 
   newSightingForm = new FormGroup(
     {
-      City: new FormControl(""),
-      ZipCode: new FormControl(""),
-      Report: new FormControl(""),
-      ForeignCountry: new FormControl(""),
-      State: new FormControl(""),
-      TimeStamp: new FormControl("")
+      City: new FormControl("", Validators.required),
+      ZipCode: new FormControl("", Validators.required),
+      Report: new FormControl("", Validators.required),
+      ForeignCountry: new FormControl("", Validators.required),
+      State: new FormControl("", Validators.required),
+      TimeStamp: new FormControl("", Validators.required)
     });
 
   selectedItem = '2';
@@ -42,6 +42,13 @@ export class NewSightingComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
+    
+    if (!this.newSightingForm.valid)
+    {
+      this.showToast('warning', "Please fill out all fields.");
+      this.loading = false;
+      return;
+    }
     let _formUFO: NewUFO =
     {
       city: this.newSightingForm.get("City").value,
@@ -72,6 +79,8 @@ export class NewSightingComponent implements OnInit {
   public resetForm() {
     this.newSightingForm.reset();
     this.newSightingForm.markAsPristine();
+    this.selectedItem = '2';
+    
   }
 
   showToast(status: NbComponentStatus, msg: String) {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from "@angular/forms";
 import { NewUFO } from '../models/new_ufo';
 import { States } from '../models/states';
@@ -7,7 +7,6 @@ import { NbToastrService, NbComponentStatus } from '@nebular/theme';
 
 @Component({
   selector: 'app-new-sighting',
-  //changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './new-sighting.component.html',
   styleUrls: ['./new-sighting.component.scss']
 })
@@ -15,7 +14,7 @@ export class NewSightingComponent implements OnInit {
 
   newSightingForm = new FormGroup(
     {
-      City: new FormControl("", Validators.required),
+      City: new FormControl("", Validators.requiredTrue),
       ZipCode: new FormControl("", Validators.required),
       Report: new FormControl("", Validators.required),
       ForeignCountry: new FormControl("", Validators.required),
@@ -42,12 +41,12 @@ export class NewSightingComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
-    
-    if (!this.newSightingForm.valid)
+    if (this.newSightingForm.invalid)
     {
-      this.showToast('warning', "Please fill out all fields.");
+      this.showToast('warning', 'Please fill out all form fields.' );
+      console.log(this.newSightingForm.errors);
       this.loading = false;
-      return;
+      return
     }
     let _formUFO: NewUFO =
     {
@@ -63,13 +62,11 @@ export class NewSightingComponent implements OnInit {
         this.resetForm();
         if (result.status == 200) {
           this.showToast('success', result.body['msg']);
-          
-        }
+           }
         else {
           {
             this.showToast('danger', "There was an issue. Please try again later. :-(");
-            
-          }
+             }
         }
         this.loading = false;
       }
@@ -80,11 +77,9 @@ export class NewSightingComponent implements OnInit {
     this.newSightingForm.reset();
     this.newSightingForm.markAsPristine();
     this.selectedItem = '2';
-    
   }
 
   showToast(status: NbComponentStatus, msg: String) {
     this.toastrService.show(status, `${msg}`, { status });
-    
   }
 }

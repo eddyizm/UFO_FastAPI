@@ -25,7 +25,7 @@ services:
     depends_on:
         - api-service
     ports:
-      - 8080:80
+      - 4200:4200
     restart: on-failure
 
 

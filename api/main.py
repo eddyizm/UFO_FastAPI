@@ -9,7 +9,7 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:4200",
-    "https://ufo.datacureservices.com"
+    # "https://ufo.datacureservices.com"
 ]
 
 app.add_middleware(

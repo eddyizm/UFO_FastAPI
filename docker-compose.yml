@@ -15,7 +15,7 @@ services:
       - 51413:80
 
   # generates ufo app
-  ufoApp:
+  ufo-app:
     image: ufo-app
     container_name: ufo-app
     build:

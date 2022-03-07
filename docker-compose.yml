@@ -4,15 +4,16 @@ services:
 
   # Proxies requests to internal services
   reverse-proxy:
-    image: reverse-proxy
-    container_name: reverse_proxy
-    build:
-      context: ./reverse-proxy
+    image: nginx:1.17.1-alpine
+    # image: reverse-proxy
+    container_name: reverse-proxy
+    # build:
+    #   context: ./reverse-proxy
     depends_on:
         - ufo-app
         - api-service
-    # volumes:
-    #   - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
+    volumes:
+      - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 51413:80
 

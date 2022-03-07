@@ -10,4 +10,4 @@ RUN npm run build --prod
 FROM nginx:1.17.1-alpine
 EXPOSE 4200
 COPY --from=compile-app /app/dist/ufoApp /usr/share/nginx/html
-# COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf

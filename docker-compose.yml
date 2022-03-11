@@ -3,15 +3,15 @@ version: '3'
 services:
 
   # Proxies requests to internal services
-  reverse-proxy:
+  rproxy:
     image: nginx:1.17.1-alpine
     # image: reverse-proxy
-    container_name: reverse-proxy
+    container_name: rproxy
     # build:
     #   context: ./reverse-proxy
     depends_on:
         - ufo-app
-        - api-service
+        # - api-service
     volumes:
       - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf
     ports:
@@ -23,19 +23,19 @@ services:
     container_name: ufo-app
     build:
       context: ./ufoApp
-    depends_on:
-        - api-service
+    # depends_on:
+    #     - api-service
     ports:
       - 4200:4200
     restart: on-failure
 
 
   # backend api service
-  api-service:
-    image: api-service
-    container_name: api-service
-    build:
-      context: ./api
-    ports:
-      - 8000:8000
-    restart: on-failure
+  # api-service:
+  #   image: api-service
+  #   container_name: api-service
+  #   build:
+  #     context: ./api
+  #   ports:
+  #     - 8000:8000
+  #   restart: on-failure

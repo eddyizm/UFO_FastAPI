@@ -9,6 +9,7 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:4200",
+    "http://localhost:51413",
     "https://ufo.datacureservices.com"
 ]
 

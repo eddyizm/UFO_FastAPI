@@ -3,19 +3,19 @@ version: '3'
 services:
 
   # Proxies requests to internal services
-  rproxy:
-    image: nginx:1.17.1-alpine
-    # image: reverse-proxy
-    container_name: rproxy
-    # build:
-    #   context: ./reverse-proxy
-    depends_on:
-        - ufo-app
-        - api-service
-    volumes:
-      - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - 51413:80
+  # rproxy:
+  #   image: nginx:1.17.1-alpine
+  #   # image: reverse-proxy
+  #   container_name: rproxy
+  #   # build:
+  #   #   context: ./reverse-proxy
+  #   depends_on:
+  #       - ufo-app
+  #       - api-service
+  #   volumes:
+  #     - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf
+  #   ports:
+  #     - 51413:80
 
   # generates ufo app
   ufo-app:
@@ -25,8 +25,10 @@ services:
       context: ./ufoApp
     depends_on:
         - api-service
+    # volumes:
+    #     - ./ufoApp/nginx.conf:/etc/nginx/nginx.conf
     ports:
-      - 4200:4200
+      - 51413:80
     restart: on-failure
 
 
@@ -37,5 +39,5 @@ services:
     build:
       context: ./api
     ports:
-      - 8001:8000
+      - 8001:8001
     restart: on-failure

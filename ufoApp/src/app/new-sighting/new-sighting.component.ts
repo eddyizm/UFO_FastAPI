@@ -4,6 +4,7 @@ import { NewUFO } from '../models/new_ufo';
 import { States } from '../models/states';
 import { UfoapiService } from '../services/ufoapi.service';
 import { NbToastrService, NbComponentStatus } from '@nebular/theme';
+import { ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-new-sighting',
@@ -17,9 +18,9 @@ export class NewSightingComponent implements OnInit {
       City: new FormControl("", Validators.required),
       ZipCode: new FormControl("", [Validators.required, Validators.minLength(5)]),
       Report: new FormControl("", Validators.required),
-      ForeignCountry: new FormControl("", Validators.required),
+      Country: new FormControl("", Validators.required),
       State: new FormControl("", Validators.required),
-      TimeStamp: new FormControl("", Validators.required)
+      Date: new FormControl("", Validators.required)
     });
 
   selectedItem = '2';
@@ -39,13 +40,22 @@ export class NewSightingComponent implements OnInit {
     }
   }
 
+  getFormValidationErrors() {
+    Object.keys(this.newSightingForm.controls).forEach(key => {
+      const controlErrors: ValidationErrors = this.newSightingForm.get(key).errors;
+      if (controlErrors != null) {
+        Object.keys(controlErrors).forEach(keyError => {
+          this.showToast('warning', `${key} ${keyError}`)
+        });
+      }
+    });
+  }
+
   onSubmit() {
     this.loading = true;
-    console.log(this.newSightingForm.value.State);
-    console.log(this.newSightingForm);
-    if (this.newSightingForm.invalid)
+     if (this.newSightingForm.invalid)
     {
-      this.showToast('warning', 'Please fill out all form fields.' );
+      this.getFormValidationErrors();
       this.loading = false;
       return
     }
@@ -54,9 +64,9 @@ export class NewSightingComponent implements OnInit {
       city: this.newSightingForm.get("City").value,
       state: this.newSightingForm.get("State").value,
       zip: this.newSightingForm.get("ZipCode").value,
-      country: this.newSightingForm.get("ForeignCountry").value,
+      country: this.newSightingForm.get("Country").value,
       report: this.newSightingForm.get("Report").value,
-      date: this.newSightingForm.get("TimeStamp").value
+      date: this.newSightingForm.get("Date").value
     }
     this.ufoService.reportNewUfo(_formUFO).subscribe(
       result => {

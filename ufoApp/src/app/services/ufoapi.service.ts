@@ -7,8 +7,8 @@ import { UFO_Dates} from '../models/ufo_dates';
 import { ufo_summary } from '../models/summary';
 import { NewUFO } from '../models/new_ufo';
 
-const BASE_URL = '/api/v1/' // DOCKER DEV
-//const BASE_URL = 'https://api.datacureservices.com/' //PROD
+// const BASE_URL = '/api/v1/' // DOCKER PROD
+const BASE_URL = 'http://127.0.0.1:8000/' // DEVELOPMENT
 
 @Injectable({
   providedIn: 'root'

@@ -14,8 +14,8 @@ export class NewSightingComponent implements OnInit {
 
   newSightingForm = new FormGroup(
     {
-      City: new FormControl("", Validators.requiredTrue),
-      ZipCode: new FormControl("", Validators.required),
+      City: new FormControl("", Validators.required),
+      ZipCode: new FormControl("", [Validators.required, Validators.minLength(5)]),
       Report: new FormControl("", Validators.required),
       ForeignCountry: new FormControl("", Validators.required),
       State: new FormControl("", Validators.required),
@@ -41,10 +41,11 @@ export class NewSightingComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
+    console.log(this.newSightingForm.value.State);
+    console.log(this.newSightingForm);
     if (this.newSightingForm.invalid)
     {
       this.showToast('warning', 'Please fill out all form fields.' );
-      console.log(this.newSightingForm.errors);
       this.loading = false;
       return
     }

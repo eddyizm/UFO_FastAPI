@@ -1,25 +1,14 @@
 <nb-card>
-  <nb-card-body [nbSpinner]="loading"
-  nbSpinnerStatus="success"
-  nbSpinnerSize="large"
-  nbSpinnerMessage="contacting the mothership..."
-  >
+  <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="success" nbSpinnerSize="large"
+    nbSpinnerMessage="contacting the mothership...">
     <form [formGroup]="newSightingForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-25">
           <label for="timestamp"><span>Date: </span></label>
         </div>
         <div class="col-75">
-          <input
-            formControlName="TimeStamp"
-            name="timestamp"
-            required 
-            type="text"
-            nbInput
-            fullWidth shape="semi-round"
-            placeholder="When?"
-            [nbDatepicker]="datepicker"
-          />
+          <input formControlName="TimeStamp" name="timestamp" type="text" nbInput fullWidth shape="semi-round"
+            placeholder="When?" [nbDatepicker]="datepicker" />
           <nb-datepicker #datepicker></nb-datepicker>
         </div>
       </div>
@@ -29,15 +18,8 @@
           <label for="City"><span>City: </span></label>
         </div>
         <div class="col-75">
-          <input
-            formControlName="City"
-            type="text"
-            name="City"
-            required 
-            nbInput
-            fullWidth shape="semi-round"
-            placeholder="eg. Los Angeles"
-          />
+          <input formControlName="City" type="text" name="City" nbInput fullWidth shape="semi-round"
+            placeholder="eg. Los Angeles" />
         </div>
       </div>
       <div class="row">
@@ -45,13 +27,8 @@
           <label for="State"><span>State or Province: </span></label>
         </div>
         <div class="col-75">
-          <nb-select
-            name="State"
-            required 
-            fullWidth shape="semi-round"
-            placeholder="eg. CA/Alberta"
-            [(selected)]="selectedItem"
-          >
+          <nb-select formControlName="State" name="State" fullWidth shape="semi-round" placeholder="eg. CA/Alberta" 
+            [(selected)]="selectedItem">
             <nb-option *ngFor="let c of statesList" [value]="c">
               {{ c }}
             </nb-option>
@@ -63,14 +40,7 @@
           <label for="Zip"><span>Zip Code: </span></label>
         </div>
         <div class="col-75">
-          <input
-            formControlName="ZipCode"
-            type="text"
-            nbInput
-            required 
-            fullWidth shape="semi-round"
-            placeholder="eg. 99999"
-          />
+          <input formControlName="ZipCode" type="text" nbInput fullWidth shape="semi-round" placeholder="eg. 99999" />
         </div>
       </div>
       <div class="row">
@@ -78,14 +48,8 @@
           <label for="Country"><span>Country: </span></label>
         </div>
         <div class="col-75">
-          <input
-            formControlName="ForeignCountry"
-            type="text"
-            required 
-            nbInput
-            fullWidth shape="semi-round"
-            placeholder="eg. Japan"
-          />
+          <input formControlName="ForeignCountry" type="text" nbInput fullWidth shape="semi-round"
+            placeholder="eg. Japan" />
         </div>
       </div>
       <div class="row">
@@ -93,25 +57,18 @@
           <label for="Report"><span>Report: </span></label>
         </div>
         <div class="col-75">
-          <textarea
-            formControlName="Report"
-            rows="7"
-            nbInput
-            required 
-            fullWidth shape="semi-round"
-            placeholder="Details"
-          ></textarea>
+          <textarea formControlName="Report" rows="7" nbInput fullWidth shape="semi-round"
+            placeholder="Details"></textarea>
         </div>
       </div>
       <div class="row">
         <div class="col-25"></div>
         <div class="col-75">
           <div class="float-right">
-            <button nbButton status="primary"
-             >submit</button>
+            <button nbButton status="primary">submit</button>
             &nbsp;
             <button nbButton type="button" status="basic" (click)="resetForm()">clear</button>
-        </div>
+          </div>
         </div>
       </div>
     </form>

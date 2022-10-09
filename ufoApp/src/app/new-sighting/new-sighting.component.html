@@ -4,10 +4,10 @@
     <form [formGroup]="newSightingForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-25">
-          <label for="timestamp"><span>Date: </span></label>
+          <label for="Date"><span>Date: </span></label>
         </div>
         <div class="col-75">
-          <input formControlName="TimeStamp" name="timestamp" type="text" nbInput fullWidth shape="semi-round"
+          <input formControlName="Date" name="Date" type="text" nbInput fullWidth shape="semi-round"
             placeholder="When?" [nbDatepicker]="datepicker" />
           <nb-datepicker #datepicker></nb-datepicker>
         </div>
@@ -18,7 +18,9 @@
           <label for="City"><span>City: </span></label>
         </div>
         <div class="col-75">
-          <input formControlName="City" type="text" name="City" nbInput fullWidth shape="semi-round"
+          <input formControlName="City" type="text" name="City" nbInput fullWidth 
+            required
+            shape="semi-round"
             placeholder="eg. Los Angeles" />
         </div>
       </div>
@@ -27,7 +29,7 @@
           <label for="State"><span>State or Province: </span></label>
         </div>
         <div class="col-75">
-          <nb-select formControlName="State" name="State" fullWidth shape="semi-round" placeholder="eg. CA/Alberta" 
+          <nb-select formControlName="State" name="State" fullWidth shape="semi-round" placeholder="eg. CA" 
             [(selected)]="selectedItem">
             <nb-option *ngFor="let c of statesList" [value]="c">
               {{ c }}
@@ -48,7 +50,7 @@
           <label for="Country"><span>Country: </span></label>
         </div>
         <div class="col-75">
-          <input formControlName="ForeignCountry" type="text" nbInput fullWidth shape="semi-round"
+          <input formControlName="Country" type="text" nbInput fullWidth shape="semi-round"
             placeholder="eg. Japan" />
         </div>
       </div>
